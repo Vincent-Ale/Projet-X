@@ -69,12 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageToCrop.src = e.target.result;
                 cropModal.style.display = 'flex';
                 cropper = new Cropper(imageToCrop, {
-                    aspectRatio: 230 / 150 // Ratio d'image 230x150
+                    aspectRatio: 230 / 150, // Ratio d'image 230x150
+                    viewMode: 1, // Limiter la zone visible de l'image
+                    dragMode: 'crop', // Définir le mode de glisser-déposer sur le recadrage
+                    cropBoxMovable: true, // Autoriser le déplacement de la zone de recadrage
+                    cropBoxResizable: true // Autoriser le redimensionnement de la zone de recadrage
                 });
             };
             reader.readAsDataURL(file);
         }
     });
+    
 
     // Fermer la modal
     function closeModal() {
