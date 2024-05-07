@@ -11,7 +11,7 @@ $dateString = $date->format('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?= '/assets/css/style.css?version='.$dateString ?>">
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Bangers:300,400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 

@@ -57,6 +57,11 @@
                 </div>
             </div>
 
+            <input type="hidden" name="crop_x" id="crop_x">
+            <input type="hidden" name="crop_y" id="crop_y">
+            <input type="hidden" name="crop_width" id="crop_width">
+            <input type="hidden" name="crop_height" id="crop_height">
+
             <!-- Modal pour le recadrage -->
             <div id="crop-modal" style="display: none;">
                 <div class="modal-content">

@@ -91,29 +91,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector('.close').addEventListener('click', closeModal);
 
+
     cropBtn.addEventListener('click', function (event) {
-        // Empêche la soumission par défaut du formulaire
         event.preventDefault();
 
         if (cropper) {
-            const croppedCanvas = cropper.getCroppedCanvas();
+            // Obtenir les données de recadrage
+            const cropData = cropper.getData();
 
             // Convertir le canvas en blob pour mettre à jour l'élément img_card
+            const croppedCanvas = cropper.getCroppedCanvas();
             croppedCanvas.toBlob(function (blob) {
-                // Créer une URL de l'image recadrée
                 const url = URL.createObjectURL(blob);
-
-                // Mettre à jour la div img_card pour afficher l'image recadrée
+                const imgCard = document.querySelector('.img_card img');
                 imgCard.src = url;
 
-                // Optionnel: Libérer l'URL Blob une fois qu'elle n'est plus utilisée
+                // Libérer l'URL blob
                 imgCard.onload = () => {
                     URL.revokeObjectURL(url);
                 };
-                
+
+                // Enregistrer les données de recadrage dans un formulaire caché
+                document.querySelector('input[name="crop_x"]').value = cropData.x;
+                document.querySelector('input[name="crop_y"]').value = cropData.y;
+                document.querySelector('input[name="crop_width"]').value = cropData.width;
+                document.querySelector('input[name="crop_height"]').value = cropData.height;
+
                 // Fermer la modal
                 closeModal();
             });
         }
     });
+    
+
+
+    
 });
