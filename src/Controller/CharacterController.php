@@ -129,48 +129,63 @@ class CharacterController {
             $mana_max = $_POST['mana_max'];
             $stamina = $_POST['stamina'];
             $stamina_max = $_POST['stamina_max'];
-
-            $cropX = isset($_POST['crop_x']) ? floatval($_POST['crop_x']) : 0;
-            $cropY = isset($_POST['crop_y']) ? floatval($_POST['crop_y']) : 0;
-            $cropWidth = isset($_POST['crop_width']) ? floatval($_POST['crop_width']) : 0;
-            $cropHeight = isset($_POST['crop_height']) ? floatval($_POST['crop_height']) : 0;
         
-           // Obtenez les détails du personnage existant
+            // Obtenez les détails du personnage existant
             $character = $this->model->getCharacterById($id);
-
-            // Traitez l'image téléchargée (s'il y en a une)
-            $image_path = $character['image_path'];  // Utilisez l'image existante par défaut
-
+            $image_path = $character['image_path']; // Utilisez l'image existante par défaut
+        
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                // Traitement de l'image téléchargée
+                // Traitez l'image téléchargée
                 $uploadDir = 'assets/images';
                 $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 $filename = uniqid() . '_' . $name . '.' . $extension;
                 $filePath = $uploadDir . DIRECTORY_SEPARATOR . $filename;
-            
+        
                 if (!is_dir($uploadDir)) {
                     echo "Le répertoire d'upload n'existe pas.";
                     return;
                 }
-            
-                // Si le téléchargement est réussi, recadrez l'image
+        
                 if (move_uploaded_file($_FILES['image']['tmp_name'], $filePath)) {
-                    // Chargez l'image téléchargée
-                    $sourceImage = imagecreatefromjpeg($filePath);
+                    // Vérifiez l'extension et le type MIME de l'image
+                    $fileType = mime_content_type($filePath);
                     
+                    if ($fileType == 'image/jpeg') {
+                        $sourceImage = imagecreatefromjpeg($filePath);
+                    } elseif ($fileType == 'image/png') {
+                        $sourceImage = imagecreatefrompng($filePath);
+                    } elseif ($fileType == 'image/gif') {
+                        $sourceImage = imagecreatefromgif($filePath);
+                    } else {
+                        // Type d'image non pris en charge
+                        echo "Le format d'image n'est pas pris en charge.";
+                        return;
+                    }
+        
+                    // Assurez-vous que l'image est correctement chargée
+                    if (!$sourceImage) {
+                        echo "Erreur lors du chargement de l'image.";
+                        return;
+                    }
+        
                     // Recadrer l'image selon les données de recadrage
+                    $cropX = isset($_POST['crop_x']) ? floatval($_POST['crop_x']) : 0;
+                    $cropY = isset($_POST['crop_y']) ? floatval($_POST['crop_y']) : 0;
+                    $cropWidth = isset($_POST['crop_width']) ? floatval($_POST['crop_width']) : 0;
+                    $cropHeight = isset($_POST['crop_height']) ? floatval($_POST['crop_height']) : 0;
+        
                     $croppedImage = imagecrop($sourceImage, [
                         'x' => $cropX,
                         'y' => $cropY,
                         'width' => $cropWidth,
                         'height' => $cropHeight,
                     ]);
-            
-                    // Enregistrer l'image recadrée
+        
                     if ($croppedImage) {
+                        // Enregistrer l'image recadrée
                         imagejpeg($croppedImage, $filePath);
                     }
-            
+        
                     // Libérer les ressources
                     imagedestroy($sourceImage);
                     imagedestroy($croppedImage);
@@ -178,20 +193,19 @@ class CharacterController {
                     echo "Erreur lors du téléchargement de l'image.";
                     return;
                 }
-            
+        
                 // Supprimez l'ancienne image si elle existe
                 if ($character['image_path'] && file_exists($character['image_path'])) {
                     unlink($character['image_path']);
                 }
-            
+        
                 // Mettez à jour le chemin de l'image
                 $image_path = $filePath;
             }
-            
-              
-        // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
-        $this->model->updateCharacter($id, $name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
-    
+        
+            // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
+            $this->model->updateCharacter($id, $name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
+       
 
         // Code pour delete toutes les entrées des tables de jointures avec le personnage concerné
         
