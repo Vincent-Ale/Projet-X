@@ -245,8 +245,7 @@ class CharacterModel {
         mana_max = :mana_max,
         stamina = :stamina,
         stamina_max = :stamina_max,
-        image_path = :image_path,
-        WHERE id = :id"
+        image_path = :image_path WHERE id = :id"
     );
     $stmt->execute([
         'name' => $name,

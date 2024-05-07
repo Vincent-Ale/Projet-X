@@ -129,7 +129,38 @@ class CharacterController {
             $stamina = $_POST['stamina'];
             $stamina_max = $_POST['stamina_max'];
         
-            $image_path = $_FILES['image'];
+            // Obtenez les détails du personnage existant
+            $character = $this->model->getCharacterById($id);
+
+            // Traitez l'image téléchargée (s'il y en a une)
+            $image_path = $character['image_path'];  // Utilisez l'image existante par défaut
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $upload_dir = 'assets/images';
+                $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid() . '_' . $name;
+                $file_path = $upload_dir . DIRECTORY_SEPARATOR . $filename . '.' . $extension;
+
+                if (!is_dir($upload_dir)) {
+                    echo "Le répertoire d'upload n'existe pas.";
+                    return;
+                }
+
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
+                    // Supprimez l'ancienne image si elle existe
+                    if ($character['image_path']) {
+                        unlink($character['image_path']);
+                    }
+        
+                    // Mettez à jour le chemin de l'image
+                    $image_path = $file_path;
+                } else {
+                    // Gérez l'erreur de téléchargement
+                    echo "Erreur lors du téléchargement de l'image.";
+                    return;
+                }
+            }
+            
               
         // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
         $this->model->updateCharacter($id, $name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
