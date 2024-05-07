@@ -42,9 +42,10 @@ $dateString = $date->format('Y-m-d H:i:s');
             <ul>
                 <li class="choice" >Choisir une catégorie : </li>
                 <li><a href="/characters">Les Personnages</a></li>
-                <li><a href="/armors">Les Armures</a></li>
                 <li><a href="/weapons">Les Armes</a></li>
+                <li><a href="/armors">Les Armures</a></li>
                 <li><a href="/spells">Les Sorts</a></li>
+                <li><a href="/items">Les Objets</a></li>
                 <li><a href="/enemies">Les Méchants</a></li>
             </ul>
         </div>

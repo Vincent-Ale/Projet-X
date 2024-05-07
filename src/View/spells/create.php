@@ -2,7 +2,7 @@
 
 
 <form method="post" action="/spells/save">
-    <div class="formulaire">
+    <div class="formulaire-spell">
         <div class="spell_sheet">
             <legend>Ajouter un Sort</legend>
             <div class="name_wpn">
@@ -29,11 +29,11 @@
                 <label for="unique">Unique:</label>
                 <input type="checkbox" id="unique" name="unique">
             </div>
-            
-            <div class="btn">
-                <input type="submit" value="Ajouter">
-                <a class="cancelbtn" href="/spells">Annuler</a>
-            </div>
+        </div>
+        
+        <div class="btn">
+            <input type="submit" value="Ajouter">
+            <a class="cancelbtn" href="/spells">Annuler</a>
         </div>
     </div>
 </form>

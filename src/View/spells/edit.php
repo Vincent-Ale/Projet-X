@@ -1,9 +1,9 @@
 <?php include 'src/View/templates/header.php'; ?>
 
 <form action="/spells/update" method="post">
-    <div class="formulaire">
+    <div class="formulaire-spell">
         <div class="spell_sheet">
-            <legend>Arme</legend>
+            <legend>Sort</legend>
             <div class="hidden">
                 <input type="hidden" id="id" name="id" value="<?= $spell['id'] ?>">
             </div>
@@ -31,11 +31,11 @@
                 <label for="unique">Unique:</label>
                 <input type="checkbox" id="unique" name="unique" <?= $spell['unique'] ? 'checked' : '' ?> >
             </div>
-            
-            <div class="btn">
-                <input type="submit" value="Mettre à jour">
-                <a class="cancelbtn" href="/spells">Annuler</a>
-            </div>
+        </div>
+
+        <div class="btn">
+            <input type="submit" value="Mettre à jour">
+            <a class="cancelbtn" href="/spells">Annuler</a>
         </div>
     </div>
 

@@ -1,9 +1,9 @@
 <?php include 'src/View/templates/header.php'; ?>
 
 <form action="/armors/update" method="post">
-    <div class="formulaire">
+    <div class="formulaire-armor">
         <div class="armor_sheet">
-            <legend>Arme</legend>
+            <legend>Armure</legend>
             <div class="hidden">
                 <input type="hidden" id="id" name="id" value="<?= $armor['id'] ?>">
             </div>
@@ -31,11 +31,11 @@
                 <label for="unique">Unique:</label>
                 <input type="checkbox" id="unique" name="unique" <?= $armor['unique'] ? 'checked' : '' ?> >
             </div>
-            
-            <div class="btn">
-                <input type="submit" value="Mettre à jour">
-                <a class="cancelbtn" href="/armors">Annuler</a>
-            </div>
+        </div>
+        
+        <div class="btn">
+            <input type="submit" value="Mettre à jour">
+            <a class="cancelbtn" href="/armors">Annuler</a>
         </div>
     </div>
 

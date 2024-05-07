@@ -57,25 +57,25 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div id="myModal" class="modal">
-                <span class="close">&times;</span>
-                <img id="modal-image" src="" alt="Image à recadrer" />
-                <button id="crop-button">Recadrer</button>
+            <!-- Modal pour le recadrage -->
+            <div id="crop-modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="cropper-container" style="overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                        <img id="image-to-crop" src="" alt="Image à recadrer" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <button id="crop-btn">Recadrer</button>
+                </div>
             </div>
+            
 
             <div class="up-img">
                 <p>Choisir son avatar:</p>
                 <input type="file" id="file-upload" name="image" accept="image/*">
 
-                <div id="cropped-image-preview">
-                    <img id="cropped-image" src="" alt="Aperçu de l'image recadrée" />
-                </div>
-
                 <!-- Label stylisé qui agit comme un bouton -->
                 <label for="file-upload" class="custom-file-upload">Choisir un fichier</label>
             </div>
-
             
         </div>
         <!-- Armes -->

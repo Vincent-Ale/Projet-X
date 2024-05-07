@@ -46,66 +46,69 @@ document.addEventListener('click', function(event) {
     }
 });
 
+
+
+
+
+// file-upload
+
 document.addEventListener('DOMContentLoaded', function () {
-    var fileInput = document.getElementById('file-upload');
-    var imgCard = document.querySelector('.img_card img'); // Cibler l'élément img dans la div img_card
-    var modal = document.getElementById('myModal');
-    var modalImage = document.getElementById('modal-image');
-    var cropButton = document.getElementById('crop-button');
-    var closeModal = document.querySelector('.close');
+    const fileUpload = document.getElementById('file-upload');
+    const imageToCrop = document.getElementById('image-to-crop');
+    const cropModal = document.getElementById('crop-modal');
+    const cropBtn = document.getElementById('crop-btn');
+    const imgCard = document.querySelector('.img_card img'); // Récupération de l'élément img de la div img_card
     
-    var cropper;
+    let cropper;
 
-    fileInput.addEventListener('change', function (event) {
-        var files = event.target.files;
-        if (files && files.length > 0) {
-            var file = files[0];
-            var reader = new FileReader();
-
+    fileUpload.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
             reader.onload = function (e) {
-                // Ouvrir la modal
-                modal.style.display = 'block';
-                modalImage.src = e.target.result;
-
-                // Instancier Cropper dans la modal
-                cropper = new Cropper(modalImage, {
-                    aspectRatio: 230 / 150, // Ratio de recadrage souhaité
-                    viewMode: 1 // Vue par défaut
+                imageToCrop.src = e.target.result;
+                cropModal.style.display = 'flex';
+                cropper = new Cropper(imageToCrop, {
+                    aspectRatio: 230 / 150 // Ratio d'image 230x150
                 });
             };
-
             reader.readAsDataURL(file);
         }
     });
 
-    // Gérer le recadrage
-    cropButton.addEventListener('click', function (event) {
-        // Empêcher la soumission du formulaire lors du clic sur "Recadrer"
-        event.preventDefault();
-
-        // Obtenir le canvas de l'image recadrée
-        var croppedCanvas = cropper.getCroppedCanvas({ width: 230, height: 150 });
-
-        // Convertir le canvas en URL de données
-        var croppedDataUrl = croppedCanvas.toDataURL();
-
-        // Mettre à jour la source de l'image dans la div .img_card
-        imgCard.src = croppedDataUrl;
-
-        // Fermer la modal
-        modal.style.display = 'none';
-
-        // Détruire Cropper pour nettoyer
-        cropper.destroy();
-    });
-
-    // Gérer la fermeture de la modal
-    closeModal.addEventListener('click', function () {
-        modal.style.display = 'none';
-
-        // Détruire Cropper si existant
+    // Fermer la modal
+    function closeModal() {
+        cropModal.style.display = 'none';
         if (cropper) {
             cropper.destroy();
+        }
+    }
+
+    document.querySelector('.close').addEventListener('click', closeModal);
+
+    cropBtn.addEventListener('click', function (event) {
+        // Empêche la soumission par défaut du formulaire
+        event.preventDefault();
+
+        if (cropper) {
+            const croppedCanvas = cropper.getCroppedCanvas();
+
+            // Convertir le canvas en blob pour mettre à jour l'élément img_card
+            croppedCanvas.toBlob(function (blob) {
+                // Créer une URL de l'image recadrée
+                const url = URL.createObjectURL(blob);
+
+                // Mettre à jour la div img_card pour afficher l'image recadrée
+                imgCard.src = url;
+
+                // Optionnel: Libérer l'URL Blob une fois qu'elle n'est plus utilisée
+                imgCard.onload = () => {
+                    URL.revokeObjectURL(url);
+                };
+                
+                // Fermer la modal
+                closeModal();
+            });
         }
     });
 });

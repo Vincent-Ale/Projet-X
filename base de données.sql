@@ -44,6 +44,24 @@ INSERT INTO `armor` (`id`, `name`, `type`, `physical_resistance`, `magical_resis
 	(11, 'Slip4', 'Light', 5, 5, 0),
 	(12, 'Slip avec une tâche', 'Light', 1, 1, 1);
 
+-- Listage de la structure de table naheulbeuk. item
+CREATE TABLE IF NOT EXISTS `item` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `power` int DEFAULT NULL,
+  `unique` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table naheulbeuk. item
+INSERT INTO `item` (`name`, `type`, `power`, `unique`) VALUES
+	('Healing Potion', 'potion', 30, 0),
+	('Mana Potion', 'potion', 30, 0),
+	('Stamina Potion', 'potion', 30, 0),
+	('Special Potion', 'potion', 40, 0);
+	
+
 -- Listage de la structure de table naheulbeuk. character
 CREATE TABLE IF NOT EXISTS `character` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
