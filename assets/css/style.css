@@ -1,0 +1,818 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    font-family: Bangers;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+}
+
+h1{
+    color: rgb(255, 191, 80);
+    font-family: Bangers;
+    font-size: 128px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 4rem 0;
+    text-shadow: 0px 0px 30px #d16900;
+}
+
+
+.admin_page{
+    background-image: url("/assets/images/background/bg077.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.flame{
+    position: fixed;
+    top: 240px;
+    left: 280px;
+    z-index: -10;
+}
+
+.flame2{
+    position: fixed;
+    top: 240px;
+    right: 290px;
+    z-index: -10;
+}
+
+
+/*####################################################################*/
+/*######### TABLEAU ##################################################*/
+/*####################################################################*/
+
+/* Style pour le tableau */
+table {
+    border-collapse: collapse; /* Assure que les bordures sont fusionnées */
+    width: 90%; /* Le tableau occupe toute la largeur */
+    font-family: Bangers;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    
+}
+
+/* Style pour les lignes impaires (une ligne sur deux) */
+tr:nth-child(odd) {
+    background-color: #e5e5e5ab; /* Couleur de fond grise pour les lignes impaires */
+}
+
+tr:nth-child(even) {
+    background-color: #a8a8a8ab; /* Couleur de fond grise pour les lignes impaires */
+}
+
+/* Vous pouvez ajouter d'autres styles pour le tableau, les cellules, etc. */
+td {
+    padding: 10px; /* Ajoute de l'espace intérieur dans les cellules */
+    border: 1px solid #525252; /* Ajoute une bordure autour des cellules */
+    text-align: left; /* Aligne le texte à gauche */
+}
+
+th {
+    padding: 10px; /* Ajoute de l'espace intérieur dans les cellules */
+    border: 1px solid #525252; /* Ajoute une bordure autour des cellules */
+    text-align: left; /* Aligne le texte à gauche */
+    background-color: #333;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+}
+
+a{
+    text-decoration: none;
+}
+
+.fa-trash{
+    color: rgb(206, 0, 0);
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.fa-pencil-alt{
+    color: rgb(0, 68, 255);
+    transform: scale(1.2);
+}
+
+.fa-square-check{
+    color: rgb(0, 185, 0);
+    transform: scale(1.2);
+}
+
+.fa-square-xmark{
+    cursor: pointer;
+    color: rgb(206, 0, 0);
+    transform: scale(1.2);
+}
+
+.span{
+    margin: 0 0.5rem 0 0.3rem;
+}
+
+/*###########################*/
+/*####### TABLEAU END #######*/
+/*###########################*/
+
+
+
+
+/*##############################################################################*/
+/*########## BOUTON AJOUTER ####################################################*/
+/*##############################################################################*/
+
+.btn_add_param{
+    display: flex;
+    justify-content: center;
+}
+
+.button_add {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #552a18; /* Couleur de fond */
+    color: rgb(255, 223, 108); /* Couleur du texte */
+    text-align: center;
+    text-decoration: none; /* Supprimer la décoration de lien */
+    border-radius: 1rem; /* Coins arrondis */
+    transition: background-color 0.3s; /* Transition douce */
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: 2px;
+    justify-content: center;
+    margin: 2rem auto;
+}
+
+.button_add:hover {
+    background-color: #894629; /* Changer la couleur de fond lors du survol */
+    color: rgb(255, 229, 134);
+    box-shadow: 0px 0px 25px white;
+}
+
+/*#####################################*/
+/*######## BOUTON AJOUTER END #########*/
+/*#####################################*/
+
+
+
+/*############################################################################*/
+/*########### FORMULAIRE #####################################################*/
+/*############################################################################*/
+
+.all-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-height: 760px;
+}
+
+
+legend{
+    transform: translateY(-100%);
+    text-align: center;
+    text-wrap: nowrap;
+    font-size: 24px;
+    border-radius: 2rem;
+    background-color: #575757;
+    padding: 0.5rem;
+    color: white;
+    font-family: Bangers;
+    letter-spacing: 1px;
+}
+
+/* Style global du formulaire */
+.char_sheet {
+    max-width: 400px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.weapon_sheet{
+    max-width: 400px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.armor_sheet{
+    max-width: 400px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.spell_sheet{
+    max-width: 400px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.enemy_sheet{
+    max-width: 600px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.atk-def{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.table_stuff{
+    width: 400px; /* Largeur maximale du formulaire */
+    height: 670px;
+    margin-top: 40px; /* Centrage et espace autour du formulaire */
+    padding: 20px; /* Espace intérieur du formulaire */
+    border: 3px solid #575757; /* Bordure grise */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #c6c6c6; /* Couleur de fond */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.overflow{
+    overflow-y: auto;
+    max-height: 580px;
+    width: 100%;
+}
+
+.check-width{
+    width: 62px;
+    text-align: center;
+}
+
+.title-width{
+    width: 80px;
+}
+
+
+
+/* Style des étiquettes */
+label {
+    display: block; /* Afficher chaque étiquette sur sa propre ligne */
+    margin-bottom: 2px; /* Espace en dessous de chaque étiquette */
+    font-weight: bold; /* Texte en gras */
+    color: rgb(48, 48, 48);
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+label[for="name"] {
+    margin-bottom: 10px;
+}
+
+.name_char{
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    font-family: Bangers;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+#name {
+    text-align: center;
+    width: 300px;
+    font-family: Bangers;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#level {
+    width: 65px;
+}
+
+#exp {
+    width: 150px;
+}
+
+#exp_max {
+    width: 150px;
+}
+
+/* Style des champs d'entrée */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+    width: 100%; /* Les champs prennent toute la largeur du formulaire */
+    padding: 10px; /* Espace intérieur des champs */
+    margin-bottom: 10px; /* Espace en dessous de chaque champ */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 4px; /* Coins arrondis */
+    box-sizing: border-box; /* Inclure les bordures et les marges dans la taille des champs */
+    transition: border-color 0.3s; /* Transition pour le changement de couleur de la bordure */
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+/* Changer la couleur de la bordure lors de la mise au focus */
+input:focus {
+    border-color: #007bff; /* Couleur de bordure bleue lors de la mise au focus */
+    outline: none; /* Retirer l'ombre de mise au focus par défaut */
+}
+
+/* Style du bouton de soumission */
+input[type="submit"] {
+    background-color: #003874; /* Couleur de fond bleue */
+    color: #fff; /* Couleur du texte blanche */
+    padding: 10px 20px; /* Espace intérieur du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur en main */
+    font-size: 24px;
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: background-color 0.3s; /* Transition pour le changement de couleur de fond */
+    margin-top: 50px;
+}
+
+/* Changer la couleur de fond lors du survol du bouton de soumission */
+input[type="submit"]:hover {
+    background-color: #007bfe; /* Couleur de fond bleue plus foncée */
+}
+
+.cancelbtn{
+    background-color: #890000; /* Couleur de fond bleue */
+    color: #fff; /* Couleur du texte blanche */
+    padding: 10px 20px; /* Espace intérieur du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Changer le curseur en main */
+    transition: background-color 0.3s; /* Transition pour le changement de couleur de fond */
+    font-family: Bangers;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    text-decoration: none;
+}
+
+.cancelbtn:hover{
+    background-color: #ee0000;
+}
+
+.btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    transform: scale(1.5);
+}
+
+.labeltop{
+    display: flex;
+    flex-direction: column;
+}
+
+.lvlexp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.vie{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 0.5rem;
+}
+
+.mana{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.stamina{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.up-img{
+    margin-top: 1rem;
+}
+
+/* Cache l'input file */
+input[type="file"] {
+    display: none;
+}
+
+/* Stylez le label comme un bouton */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #552a18; /* Couleur de fond */
+    color: rgb(255, 223, 108); /* Couleur de texte */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Arrondir les bords */
+    cursor: pointer; /* Changer le curseur en pointer */
+    text-align: center; /* Centrer le texte */
+    text-decoration: none; /* Pas de soulignement */
+}
+
+.custom-file-upload:hover{
+    background-color: #894629; 
+}
+/*##############################*/
+/*####### FORMULAIRE END #######*/
+/*##############################*/
+
+
+
+/*##############################################################################*/
+/*############ MENU ADMIN ######################################################*/
+/*##############################################################################*/
+
+.menu_admin{
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    background-image: url("/assets/images/background/bgmenu04.jpg");
+    background-repeat: repeat;
+}
+
+.choice{
+    padding: 14px 16px; /* Espacement interne des liens */
+    color: rgb(255, 229, 134); /* Couleur du texte */
+    text-decoration: none; /* Supprime la soulignure des liens */
+    font-size: 48px; /* Taille de la police */
+}
+
+/* Style global du menu */
+.menu_admin ul {
+    list-style-type: none; /* Supprime les puces des éléments de liste */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Style des éléments de la liste */
+.menu_admin ul li {
+    display: inline-block; /* Affiche les éléments de la liste en ligne */
+}
+
+/* Style des liens */
+.menu_admin ul li a {
+    display: block;
+    padding: 14px 16px; /* Espacement interne des liens */
+    color: rgb(255, 229, 134); /* Couleur du texte */
+    text-decoration: none; /* Supprime la soulignure des liens */
+    font-size: 32px; /* Taille de la police */
+    transition: background-color 0.3s; /* Transition pour le survol */
+    border-radius: 2rem;
+    background-color: #552a18;
+    margin: 0 1rem;
+}
+
+/* Changement de couleur de fond au survol */
+.menu_admin ul li a:hover {
+    background-color: #575757;
+    border-radius: 2rem;
+}
+
+/*#####################################*/
+/*########## MENU ADMIN END ###########*/
+/*#####################################*/
+
+
+
+/*##############################################################################*/
+/*############ MENU USER #######################################################*/
+/*##############################################################################*/
+
+.menu_user{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 24px;
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    width: 280px;
+    background-image: url("/assets/images/background/bgmenu01.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem;
+}
+
+/* Style global du menu */
+.menu_user ul {
+    list-style-type: none; /* Supprime les puces des éléments de liste */
+    padding: 0;
+    margin: 0;
+}
+
+/* Style des éléments de la liste */
+.menu_user ul li {
+    display: block; /* Affiche les éléments de la liste en ligne */
+}
+
+/* Style des liens */
+.menu_user ul li a {
+    display: block;
+    padding: 7px 8px; /* Espacement interne des liens */
+    color: rgb(255, 229, 134); /* Couleur du texte */
+    text-decoration: none; /* Supprime la soulignure des liens */
+    font-size: 24px; /* Taille de la police */
+    transition: background-color 0.3s; /* Transition pour le survol */
+    text-align: center;
+}
+
+/* Changement de couleur de fond au survol */
+.menu_user ul li a:hover {
+    background-color: #575757;
+}
+
+/*#####################################*/
+/*########## MENU USER  END ###########*/
+/*#####################################*/
+
+
+
+/*##############################################################################*/
+/*############ MENU CODEX ######################################################*/
+/*##############################################################################*/
+
+.menu_codex{
+    font-family: Bangers;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    background-image: url("/assets/images/background/bgmenu04.jpg");
+    background-repeat: repeat;
+}
+
+.choice_user{
+    padding: 14px 16px; /* Espacement interne des liens */
+    color: rgb(255, 229, 134); /* Couleur du texte */
+    text-decoration: none; /* Supprime la soulignure des liens */
+    font-size: 48px; /* Taille de la police */
+}
+
+/* Style global du menu */
+.menu_codex ul {
+    list-style-type: none; /* Supprime les puces des éléments de liste */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Style des éléments de la liste */
+.menu_codex ul li {
+    display: inline-block; /* Affiche les éléments de la liste en ligne */
+}
+
+/* Style des liens */
+.menu_codex ul li a {
+    display: block;
+    padding: 14px 16px; /* Espacement interne des liens */
+    color: rgb(255, 229, 134); /* Couleur du texte */
+    text-decoration: none; /* Supprime la soulignure des liens */
+    font-size: 32px; /* Taille de la police */
+    transition: background-color 0.3s; /* Transition pour le survol */
+    border-radius: 2rem;
+    background-color: #552a18;
+    margin: 0 1rem;
+}
+
+/* Changement de couleur de fond au survol */
+.menu_codex ul li a:hover {
+    background-color: #575757;
+    border-radius: 2rem;
+}
+
+/*#####################################*/
+/*########## MENU CODEX END ###########*/
+/*#####################################*/
+
+
+
+/*##################################################################################*/
+/*############ FICHE DU CODEX ######################################################*/
+/*##################################################################################*/
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.char_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    background-image: url("/assets/images/background/bgmenu04.jpg");
+    border: 5px solid rgb(220, 197, 113);
+}
+
+h5{
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 72px;
+    letter-spacing: 2px;
+    color: rgb(220, 197, 113);
+    text-align: center;
+    text-shadow: 0 0 20px black;
+    margin: 3rem 0;
+}
+
+h6{
+    font-size: 32px;
+    letter-spacing: 3px;
+}
+
+.title-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 100px;
+    background-image: url("/assets/images/title_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.img_card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 150px;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 1rem;
+    margin: 0.5rem auto;
+    border: 3px solid black;
+    &>img{
+        width: 230px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 3px solid black;
+    }
+}
+
+.stat-lign{
+    display: flex;
+    flex-direction: row;
+}
+
+.stat_char_user{
+    background-image: url("/assets/images/stat_bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5rem 4rem 0 2rem;
+}
+
+p{
+    margin: 0 0.5rem 0.5rem 0;
+
+}
+
+.health{
+    color: red;
+}
+
+.stamina{
+    color: green;
+}
+
+.mana{
+    color: blue;
+}
+
+/*#########################################*/
+/*########## FICHE DU CODEX END ###########*/
+/*#########################################*/
+
+
+
+/*#####################################################################*/
+/*########## MODAL ####################################################*/
+/*#####################################################################*/
+
+
+
+/* Styles pour la modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Bouton de fermeture de la modal */
+.close {
+    color: #aaa;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Bouton de recadrage */
+#crop-button {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#crop-button:hover {
+    background-color: #0056b3;
+}
+
+/* Aperçu de l'image recadrée */
+#cropped-image-preview {
+    width: 230px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    display: none;
+}
+
+/*###################################*/
+/*########## MODAL ##################*/
+/*###################################*/
