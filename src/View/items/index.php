@@ -36,6 +36,6 @@
 
 </table>
 
-    <div class="btn_add_param"><a class="button_add" href="items/create">Ajouter une armure</a></div>
+    <div class="btn_add_param"><a class="button_add" href="items/create">Ajouter un objet</a></div>
 
 <?php include 'src/View/templates/footer.php'; ?>

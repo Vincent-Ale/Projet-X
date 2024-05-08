@@ -1,7 +1,7 @@
 <?php include 'src/View/templates/header.php'; ?>
 
 <form action="/weapons/update" method="post">
-    <div class="formulaire">
+    <div class="formulaire-weapon">
         <div class="weapon_sheet">
             <legend>Arme</legend>
             <div class="hidden">
@@ -31,12 +31,12 @@
                 <label for="unique">Unique:</label>
                 <input type="checkbox" id="unique" name="unique" <?= $weapon['unique'] ? 'checked' : '' ?> >
             </div>
-            
-            <div class="btn">
-                <input type="submit" value="Mettre à jour">
-                <a class="cancelbtn" href="/weapons">Annuler</a>
-            </div>
         </div>
+    </div>
+
+    <div class="btn">
+        <input type="submit" value="Mettre à jour">
+        <a class="cancelbtn" href="/weapons">Annuler</a>
     </div>
 
 </form>

@@ -3,6 +3,53 @@
     padding: 0;
 }
 
+:root {
+    --blue-color: rgb(54, 107, 252);
+    --green-color: rgb(0, 185, 0);
+    --red-color: rgb(248, 50, 50);
+    --brown-dark: #552a18;
+    --brown-dark2: #331609;
+    --brown-light: #894629;
+
+    --brown-dark-opa: #552a18de;
+    --brown-light-opa: #894629de;
+
+    --light-gold-color: #f09235;
+    --gold-color: #d16900;
+    --yellow-color: rgb(255, 191, 80);
+    --light-yellow: rgb(255, 229, 134);
+    --ultra-light-yellow: rgb(220, 197, 113);
+
+    --dark-grey: rgb(37, 37, 37);
+}
+
+/* Barre de défilement */
+/* Chrome, Safari, Edge */
+::-webkit-scrollbar {
+    width: 12px; /* Largeur de la barre de défilement */
+  }
+  
+  /* Style de la poignée */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--yellow-color); /* Couleur de la poignée */
+    border-radius: 6px; /* Coins arrondis de la poignée */
+  }
+  
+  /* Hover sur la poignée */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light-gold-color); /* Couleur de la poignée au survol */
+  }
+  
+  /* Barre de défilement de fond */
+  ::-webkit-scrollbar-track {
+    background-color: var(--brown-dark2); /* Couleur de fond de la barre de défilement */
+  }
+  
+  /* Barre de défilement de fond au survol */
+  ::-webkit-scrollbar-track:hover {
+    background-color: var(--brown-dark2); /* Couleur de fond de la barre de défilement au survol */
+  }
+
 p{
     font-family: Bangers;
     font-weight: 300;
@@ -44,6 +91,51 @@ h1{
     z-index: -10;
 }
 
+/*####################################################################*/
+/*######### ACCUEIL ##################################################*/
+/*####################################################################*/
+
+h2{
+    color: var(--yellow-color);
+    font-family: Bangers;
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px var(--gold-color);
+    text-align: center;
+    margin: 7rem 0 8rem 0;
+}
+
+h3{
+    color: var(--yellow-color);
+    font-family: Bangers;
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px var(--gold-color);
+    text-align: center;
+    margin: 4rem 0;
+}
+
+h4{
+    color: var(--yellow-color);
+    font-family: Bangers;
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px var(--gold-color);
+    text-align: center;
+    margin: 4rem 0;
+}
+
+
+
+
+/*###############################################*/
+/*######### ACCUEIL END #########################*/
+/*###############################################*/
+
+
 
 /*####################################################################*/
 /*######### TABLEAU ##################################################*/
@@ -61,28 +153,42 @@ table {
     
 }
 
+.table-jointures {
+    border-collapse: collapse; /* Assure que les bordures sont fusionnées */
+    width: 90%; /* Le tableau occupe toute la largeur */
+    font-family: Bangers;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    max-width: 349px;
+    transform: translateX(-10px);
+    
+}
+
 /* Style pour les lignes impaires (une ligne sur deux) */
 tr:nth-child(odd) {
-    background-color: #e5e5e5ab; /* Couleur de fond grise pour les lignes impaires */
+    background-color: var(--brown-light-opa); /* Couleur de fond grise pour les lignes impaires */
 }
 
 tr:nth-child(even) {
-    background-color: #a8a8a8ab; /* Couleur de fond grise pour les lignes impaires */
+    background-color: var(--brown-dark-opa); /* Couleur de fond grise pour les lignes impaires */
 }
 
 /* Vous pouvez ajouter d'autres styles pour le tableau, les cellules, etc. */
 td {
     padding: 10px; /* Ajoute de l'espace intérieur dans les cellules */
-    border: 1px solid #525252; /* Ajoute une bordure autour des cellules */
+    border: 2px solid black; /* Ajoute une bordure autour des cellules */
     text-align: left; /* Aligne le texte à gauche */
+    color: var(--yellow-color);
 }
 
 th {
     padding: 10px; /* Ajoute de l'espace intérieur dans les cellules */
-    border: 1px solid #525252; /* Ajoute une bordure autour des cellules */
+    border: 2px solid black; /* Ajoute une bordure autour des cellules */
     text-align: left; /* Aligne le texte à gauche */
-    background-color: #333;
-    color: rgb(255, 255, 255);
+    background-color: var(--brown-dark2);
+    color: var(--light-gold-color);
     font-weight: 300;
 }
 
@@ -91,24 +197,24 @@ a{
 }
 
 .fa-trash{
-    color: rgb(206, 0, 0);
+    color: var(--red-color);
     cursor: pointer;
     transform: scale(1.2);
 }
 
 .fa-pencil-alt{
-    color: rgb(0, 68, 255);
+    color: var(--blue-color);
     transform: scale(1.2);
 }
 
 .fa-square-check{
-    color: rgb(0, 185, 0);
+    color: var(--green-color);
     transform: scale(1.2);
 }
 
 .fa-square-xmark{
     cursor: pointer;
-    color: rgb(206, 0, 0);
+    color: var(--red-color);
     transform: scale(1.2);
 }
 
@@ -147,11 +253,12 @@ a{
     letter-spacing: 2px;
     justify-content: center;
     margin: 2rem auto;
+    box-shadow: 0px 0px 10px white;
 }
 
 .button_add:hover {
     background-color: #894629; /* Changer la couleur de fond lors du survol */
-    color: rgb(255, 229, 134);
+    color: var(--yellow-color);
     box-shadow: 0px 0px 25px white;
 }
 
@@ -174,7 +281,7 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-height: 760px;
+    max-height: 780px;
 }
 
 
@@ -184,9 +291,10 @@ legend{
     text-wrap: nowrap;
     font-size: 24px;
     border-radius: 2rem;
-    background-color: #575757;
+    border: 5px solid var(--yellow-color);
+    background-color: var(--brown-dark);
     padding: 0.5rem;
-    color: white;
+    color: var(--yellow-color);
     font-family: Bangers;
     letter-spacing: 1px;
 }
@@ -194,13 +302,23 @@ legend{
 /* Style global du formulaire */
 .char_sheet {
     max-width: 400px; /* Largeur maximale du formulaire */
-    height: 670px;
+    height: 700px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.formulaire-weapon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-height: 760px;
 }
 
 .weapon_sheet{
@@ -208,9 +326,12 @@ legend{
     height: 670px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color);
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
@@ -226,9 +347,12 @@ legend{
     height: 670px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
@@ -244,9 +368,12 @@ legend{
     height: 670px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
@@ -262,10 +389,20 @@ legend{
     height: 470px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.formulaire-enemies{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-height: 760px;
 }
 
 
@@ -274,9 +411,12 @@ legend{
     height: 670px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
@@ -288,12 +428,15 @@ legend{
 
 .table_stuff{
     width: 400px; /* Largeur maximale du formulaire */
-    height: 670px;
+    height: 700px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
-    border: 3px solid #575757; /* Bordure grise */
+    border: 4px solid var(--yellow-color); /* Bordure grise */
     border-radius: 8px; /* Coins arrondis */
     background-color: #c6c6c6; /* Couleur de fond */
+    background-image: url('/assets/images/background/bgmenu01.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
@@ -301,10 +444,12 @@ legend{
     overflow-y: auto;
     max-height: 580px;
     width: 100%;
+    max-width: 400px;
+    transform: translateX(6px);
 }
 
 .check-width{
-    width: 62px;
+    width: 80px;
     text-align: center;
 }
 
@@ -319,7 +464,7 @@ label {
     display: block; /* Afficher chaque étiquette sur sa propre ligne */
     margin-bottom: 2px; /* Espace en dessous de chaque étiquette */
     font-weight: bold; /* Texte en gras */
-    color: rgb(48, 48, 48);
+    color: var(--yellow-color);
     font-family: Bangers;
     font-weight: 500;
     letter-spacing: 1px;
@@ -332,9 +477,9 @@ label[for="name"] {
 .name_char{
     text-align: center;
     margin-bottom: 10px;
-    margin-top: -20px;
+    margin-top: -30px;
     font-family: Bangers;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 500;
     letter-spacing: 1px;
 }
@@ -367,19 +512,21 @@ input[type="email"] {
     width: 100%; /* Les champs prennent toute la largeur du formulaire */
     padding: 10px; /* Espace intérieur des champs */
     margin-bottom: 10px; /* Espace en dessous de chaque champ */
-    border: 1px solid #ccc; /* Bordure grise */
-    border-radius: 4px; /* Coins arrondis */
+    border: 3px solid var(--yellow-color); /* Bordure grise */
+    border-radius: 6px; /* Coins arrondis */
     box-sizing: border-box; /* Inclure les bordures et les marges dans la taille des champs */
     transition: border-color 0.3s; /* Transition pour le changement de couleur de la bordure */
     font-family: Bangers;
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 16px;
+    background-color: var(--brown-dark2);
+    color: var(--light-yellow);
 }
 
 /* Changer la couleur de la bordure lors de la mise au focus */
 input:focus {
-    border-color: #007bff; /* Couleur de bordure bleue lors de la mise au focus */
+    /* border-color: #007bff; Couleur de bordure bleue lors de la mise au focus */
     outline: none; /* Retirer l'ombre de mise au focus par défaut */
 }
 
@@ -434,6 +581,8 @@ input[type="submit"]:hover {
     justify-content: center;
     gap: 1rem;
     transform: scale(1.5);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .labeltop{
@@ -471,6 +620,9 @@ input[type="submit"]:hover {
 
 .up-img{
     margin-top: 1rem;
+    &>p{
+        color: var(--yellow-color);
+    }
 }
 
 /* Cache l'input file */
@@ -482,8 +634,8 @@ input[type="file"] {
 .custom-file-upload {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #552a18; /* Couleur de fond */
-    color: rgb(255, 223, 108); /* Couleur de texte */
+    background-color: var(--yellow-color); /* Couleur de fond */
+    color: var(--brown-dark2); /* Couleur de texte */
     border: none; /* Pas de bordure */
     border-radius: 5px; /* Arrondir les bords */
     cursor: pointer; /* Changer le curseur en pointer */
@@ -492,7 +644,8 @@ input[type="file"] {
 }
 
 .custom-file-upload:hover{
-    background-color: #894629; 
+    background-color: var(--brown-dark2); 
+    color: var(--yellow-color);
 }
 /*##############################*/
 /*####### FORMULAIRE END #######*/
@@ -543,13 +696,15 @@ input[type="file"] {
     font-size: 32px; /* Taille de la police */
     transition: background-color 0.3s; /* Transition pour le survol */
     border-radius: 2rem;
+    border: 2px solid var(--light-gold-color);
     background-color: #552a18;
     margin: 0 1rem;
 }
 
 /* Changement de couleur de fond au survol */
 .menu_admin ul li a:hover {
-    background-color: #575757;
+    background-color: var(--brown-light);
+    color: var(--yellow-color);
     border-radius: 2rem;
 }
 
@@ -600,11 +755,14 @@ input[type="file"] {
     font-size: 24px; /* Taille de la police */
     transition: background-color 0.3s; /* Transition pour le survol */
     text-align: center;
+    border-radius: 1rem;
 }
+
 
 /* Changement de couleur de fond au survol */
 .menu_user ul li a:hover {
-    background-color: #575757;
+    background-color: var(--brown-light);
+    color: var(--yellow-color);
 }
 
 /*#####################################*/
@@ -658,11 +816,13 @@ input[type="file"] {
     border-radius: 2rem;
     background-color: #552a18;
     margin: 0 1rem;
+    border: 2px solid var(--light-gold-color);
 }
 
 /* Changement de couleur de fond au survol */
 .menu_codex ul li a:hover {
-    background-color: #575757;
+    background-color: var(--brown-light);
+    color: var(--yellow-color);
     border-radius: 2rem;
 }
 
@@ -698,8 +858,9 @@ input[type="file"] {
     width: 275px;
     height: 420px;
     border-radius: 1rem;
-    background-image: url("/assets/images/background/bgmenu04.jpg");
-    border: 5px solid rgb(220, 197, 113);
+    background-image: url("/assets/images/background/wood-pattern.png");
+    background-color: var(--brown-dark2);
+    border: 3px solid var(--ultra-light-yellow);
 }
 
 h5{
@@ -707,9 +868,9 @@ h5{
     font-weight: 500;
     font-size: 72px;
     letter-spacing: 2px;
-    color: rgb(220, 197, 113);
+    color: var(--yellow-color);
     text-align: center;
-    text-shadow: 0 0 20px black;
+    text-shadow: 0 0 20px var(--gold-color);
     margin: 3rem 0;
 }
 
@@ -737,16 +898,19 @@ h6{
     width: 230px;
     height: 150px;
     overflow: hidden;
-    background-color: #333;
+    background-color: var(--light-gold-color);
+    background-image: url('/assets/images/avatar3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     border-radius: 1rem;
     margin: 0.5rem auto;
-    border: 3px solid black;
+    border: 3px solid var(--yellow-color);
     &>img{
         width: 230px;
         height: auto;
         object-fit: cover;
-        border-radius: 1rem;
-        border: 3px solid black;
+        border-radius: 3px;
     }
 }
 
@@ -850,3 +1014,39 @@ p{
 /*###################################*/
 /*########## MODAL ##################*/
 /*###################################*/
+
+
+.custom-checkbox {
+    /* Cacher la checkbox native */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Définir une taille pour le nouvel élément */
+    width: 30px;
+    height: 30px;
+    /* Styler la nouvelle case */
+    border: 2px solid var(--yellow-color); /* Bordure de la case */
+    border-radius: 4px; /* Coins arrondis */
+    position: relative;
+}
+
+.custom-checkbox:hover{
+    cursor: pointer;
+}
+  
+/* Style pour la case cochée */
+.custom-checkbox:checked::before {
+    content: ''; /* Ajouter un contenu pour que le pseudo-élément soit visible */
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: var(--light-gold-color); /* Couleur de la case cochée */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px; /* Coins arrondis */
+}
+
+.custom-checkbox:focus {
+    outline: none; /* Supprimer l'outline lors du focus */
+  }

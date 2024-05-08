@@ -75,11 +75,11 @@
             
 
             <div class="up-img">
-                <p>Choisir son avatar:</p>
+                <p>Changer son avatar:</p>
                 <input type="file" id="file-upload" name="image" accept="image/*">
 
                 <!-- Label stylisé qui agit comme un bouton -->
-                <label for="file-upload" class="custom-file-upload">Choisir un fichier</label>
+                <label for="file-upload" class="custom-file-upload">Importer une image</label>
             </div>
             
         </div>
@@ -87,7 +87,7 @@
         <div class="table_stuff">
             <legend>Armes</legend>
             <!-- En-têtes de la table -->
-            <table>
+            <table class="table-jointures">
                 <thead>
                 <tr>
                 <th>Nom de l'Arme</th>
@@ -97,12 +97,12 @@
             </table>
             <!-- Contenu de la table avec défilement -->
             <div class="overflow">
-            <table>
+            <table class="table-jointures">
                 <tbody>
                 <?php foreach ($weapons as $weapon): ?>
                 <tr>
                 <td><label for="weapon-<?= $weapon['id'] ?>"><?= $weapon['name'] ?></label></td>
-                <td class="check-width"><input type="checkbox" id="weapon-<?= $weapon['id'] ?>" name="weapons[]" value="<?= $weapon['id'] ?>"
+                <td class="check-width"><input type="checkbox" class="custom-checkbox" id="weapon-<?= $weapon['id'] ?>" name="weapons[]" value="<?= $weapon['id'] ?>"
                 <?php
                     if (in_array($weapon['id'], $weaponIds)) {
                         echo 'checked';
@@ -121,7 +121,7 @@
         <div class="table_stuff">
             <legend>Armures</legend>
             <!-- En-têtes de la table -->
-            <table>
+            <table class="table-jointures">
                 <thead>
                 <tr>
                 <th>Nom de l'Armure</th>
@@ -131,12 +131,12 @@
             </table>
             <!-- Contenu de la table avec défilement -->
             <div class="overflow">
-            <table>
+            <table class="table-jointures">
                 <tbody>
                 <?php foreach ($armors as $armor): ?>
                 <tr>
                     <td><label for="armor-<?= $armor['id'] ?>"><?= $armor['name'] ?></label></td>
-                    <td class="check-width"><input type="checkbox" id="armor-<?= $armor['id'] ?>" name="armors[]" value="<?= $armor['id'] ?>"
+                    <td class="check-width"><input type="checkbox" class="custom-checkbox" id="armor-<?= $armor['id'] ?>" name="armors[]" value="<?= $armor['id'] ?>"
                         <?php
                         if (in_array($armor['id'], $armorIds)) {
                             echo 'checked';
@@ -156,7 +156,7 @@
         <div class="table_stuff">
             <legend>Sorts</legend>
             <!-- En-têtes de la table -->
-            <table>
+            <table class="table-jointures">
                 <thead>
                 <tr>
                 <th>Nom du Sort</th>
@@ -166,12 +166,12 @@
             </table>
             <!-- Contenu de la table avec défilement -->
             <div class="overflow">
-            <table>
+            <table class="table-jointures">
                 <tbody>
                 <?php foreach ($spells as $spell): ?>
                 <tr>
                 <td><label for="spell-<?= $spell['id'] ?>"><?= $spell['name'] ?></label></td>
-                <td class="check-width"><input type="checkbox" id="spell-<?= $spell['id'] ?>" name="spells[]" value="<?= $spell['id'] ?>"
+                <td class="check-width"><input type="checkbox" class="custom-checkbox" id="spell-<?= $spell['id'] ?>" name="spells[]" value="<?= $spell['id'] ?>"
                     <?php
                     if (in_array($spell['id'], $spellIds)) {
                         echo 'checked';

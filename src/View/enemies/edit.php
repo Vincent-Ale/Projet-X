@@ -1,7 +1,7 @@
 <?php include 'src/View/templates/header.php'; ?>
 
 <form action="/enemies/update" method="post">
-    <div class="formulaire">
+    <div class="formulaire-enemies">
         <div class="enemy_sheet">
             <legend>Fiche Ennemi</legend>
             <div class="hidden">
@@ -57,12 +57,12 @@
                 <label for="is_boss">Est un Boss:</label>
                 <input type="checkbox" id="is_boss" name="is_boss" <?= $enemy['is_boss'] ? 'checked' : '' ?> >
             </div>
-
-            <div class="btn">
-                <input type="submit" value="Mettre à jour">
-                <a class="cancelbtn" href="/enemies">Annuler</a>
-            </div>
         </div>
+    </div>
+    
+    <div class="btn">
+        <input type="submit" value="Mettre à jour">
+        <a class="cancelbtn" href="/enemies">Annuler</a>
     </div>
 
 </form>

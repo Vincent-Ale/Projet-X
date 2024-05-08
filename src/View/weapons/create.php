@@ -2,7 +2,7 @@
 
 
 <form method="post" action="/weapons/save">
-    <div class="formulaire">
+    <div class="formulaire-weapon">
         <div class="weapon_sheet">
             <legend>Ajouter une Arme</legend>
             <div class="name_wpn">
@@ -29,12 +29,12 @@
                 <label for="unique">Unique:</label>
                 <input type="checkbox" id="unique" name="unique">
             </div>
-            
-            <div class="btn">
-                <input type="submit" value="Ajouter">
-                <a class="cancelbtn" href="/weapons">Annuler</a>
-            </div>
         </div>
+    </div>
+
+    <div class="btn">
+        <input type="submit" value="Ajouter">
+        <a class="cancelbtn" href="/weapons">Annuler</a>
     </div>
 </form>
 

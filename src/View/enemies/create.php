@@ -50,15 +50,17 @@
                 </div>
             </div>
             <div class="is_boss">
-                        <label for="is_boss">Est un Boss:</label>
-                        <input type="checkbox" id="is_boss" name="is_boss">
-                    </div>
-            <div class="btn">
-                <input type="submit" value="Ajouter">
-                <a class="cancelbtn" href="/enemies">Annuler</a>
+                <label for="is_boss">Est un Boss:</label>
+                <input type="checkbox" id="is_boss" name="is_boss">
             </div>
         </div>
     </div>
+
+    <div class="btn">
+        <input type="submit" value="Ajouter">
+        <a class="cancelbtn" href="/enemies">Annuler</a>
+    </div>
+
 </form>
 
 <?php include 'src/View/templates/footer.php'; ?>
