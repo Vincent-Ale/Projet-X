@@ -22,18 +22,20 @@ class SpellModel {
         $type,
         $power,
         $mana_cost,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
-        INSERT INTO `spell` (name, type, power, mana_cost, `unique`)
-        VALUES (?, ?, ?, ?, ?)"
+        INSERT INTO `spell` (name, type, power, mana_cost, `unique`, image_path)
+        VALUES (?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $name,
             $type,
             $power,
             $mana_cost,
-            $unique
+            $unique,
+            $image_path
         ]);
     }
 
@@ -43,7 +45,8 @@ class SpellModel {
         $type,
         $power,
         $mana_cost,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `spell` SET 
@@ -51,7 +54,8 @@ class SpellModel {
         type = :type,
         power = :power,
         mana_cost = :mana_cost,
-        `unique` = :unique
+        `unique` = :unique,
+        image_path = :image_path
         WHERE id = :id"
     );
     $stmt->execute([
@@ -60,6 +64,7 @@ class SpellModel {
         'power' => $power,
         'mana_cost' => $mana_cost,
         'unique' => $unique,
+        'image_path'=> $image_path,
         'id' => $id
     ]);
     }

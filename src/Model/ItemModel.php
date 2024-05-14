@@ -21,17 +21,19 @@ class ItemModel {
         $name,
         $type,
         $power,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
-        INSERT INTO `item` (name, type, power, `unique`)
-        VALUES (?, ?, ?, ?)"
+        INSERT INTO `item` (name, type, power, `unique`, image_path)
+        VALUES (?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $name,
             $type,
             $power,
-            $unique
+            $unique,
+            $image_path
         ]);
     }
 
@@ -40,14 +42,16 @@ class ItemModel {
         $name,
         $type,
         $power,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `item` SET 
         name = :name,
         type = :type,
         power = :power,
-        `unique` = :unique
+        `unique` = :unique,
+        image_path = :image_path
         WHERE id = :id"
     );
     $stmt->execute([
@@ -55,6 +59,7 @@ class ItemModel {
         'type' => $type,
         'power' => $power,
         'unique' => $unique,
+        'image_path' => $image_path,
         'id' => $id
     ]);
     }

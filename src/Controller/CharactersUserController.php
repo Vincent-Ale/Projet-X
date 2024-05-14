@@ -12,8 +12,7 @@ class CharactersUserController {
         // Instancier le modèle
         $this->model = new CharacterModel();
     }
-
-
+    
     public function index() {
         $characters = $this->model->getAllCharacters();
         include 'src/View/characters_user/index.php';

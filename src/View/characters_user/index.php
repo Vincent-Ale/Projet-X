@@ -13,15 +13,15 @@
         <div class="img_card"><img src="<?php echo $character['image_path']; ?>" alt=""></div>
         <div class="stat_char_user">
             <div class="stat-lign">
-                <div><p>Santé: </p></div>
+                <div class="text-stat"><p>Santé: </p></div>
                 <div class="health"><?= $character["health"] ?></div>
             </div>
             <div class="stat-lign">
-                <div><p>Endurance: </p></div>
+                <div class="text-stat"><p>Endurance: </p></div>
                 <div class="stamina"><?= $character["stamina"] ?></div>
             </div>
             <div class="stat-lign">
-                <div><p>Mana: </p></div>
+                <div class="text-stat"><p>Mana: </p></div>
                 <div class="mana"><?= $character["mana"] ?></div>
             </div>
         </div>

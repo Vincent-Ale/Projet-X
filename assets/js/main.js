@@ -127,3 +127,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 });
+
+
+
+function hideError() {
+    document.getElementById('errorMessage').style.display = 'none';
+}
+
+

@@ -28,11 +28,12 @@ class EnemyModel {
         $stamina_max,
         $attack,
         $defense,
-        $is_boss
+        $is_boss,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
-        INSERT INTO `enemy` (name, health, health_max, mana, mana_max, stamina, stamina_max, attack, defense, is_boss)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        INSERT INTO `enemy` (name, health, health_max, mana, mana_max, stamina, stamina_max, attack, defense, is_boss, image_path)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $name,
@@ -44,7 +45,8 @@ class EnemyModel {
             $stamina_max,
             $attack,
             $defense,
-            $is_boss
+            $is_boss,
+            $image_path
         ]);
     }
 
@@ -59,7 +61,8 @@ class EnemyModel {
         $stamina_max,
         $attack,
         $defense,
-        $is_boss
+        $is_boss,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `enemy` SET 
@@ -72,7 +75,8 @@ class EnemyModel {
         stamina_max = :stamina_max,
         attack = :attack,
         defense= :defense,
-        is_boss = :is_boss
+        is_boss = :is_boss,
+        image_path = :image_path
         WHERE id = :id"
     );
     $stmt->execute([
@@ -86,6 +90,7 @@ class EnemyModel {
         'attack'=> $attack,
         'defense'=> $defense,
         'is_boss'=> $is_boss,
+        'image_path' => $image_path,
         'id' => $id
     ]);
     }

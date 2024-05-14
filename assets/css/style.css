@@ -4,23 +4,29 @@
 }
 
 :root {
-    --blue-color: rgb(54, 107, 252);
-    --green-color: rgb(0, 185, 0);
-    --red-color: rgb(248, 50, 50);
+    --blue-color: #366BFC;
+    --green-color: #00B900;
+    --dark-green: #00191e;
+    --red-color: #F83232;
     --brown-dark: #552a18;
     --brown-dark2: #331609;
     --brown-light: #894629;
+    --brown-leather: #503225;
 
     --brown-dark-opa: #552a18de;
     --brown-light-opa: #894629de;
 
     --light-gold-color: #f09235;
     --gold-color: #d16900;
-    --yellow-color: rgb(255, 191, 80);
-    --light-yellow: rgb(255, 229, 134);
-    --ultra-light-yellow: rgb(220, 197, 113);
+    --yellow-color: #FFBF50;
+    --light-yellow: #FFE586;
+    --ultra-light-yellow: #DCC571;
 
-    --dark-grey: rgb(37, 37, 37);
+    --card-bg: #c05020;
+
+    --light-grey: #80705b;
+
+    --dark-grey: #252525;
 }
 
 /* Barre de défilement */
@@ -323,7 +329,7 @@ legend{
 
 .weapon_sheet{
     max-width: 400px; /* Largeur maximale du formulaire */
-    height: 670px;
+    height: 650px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
     border: 4px solid var(--yellow-color);
@@ -339,12 +345,12 @@ legend{
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 760px;
+    max-height: 890px;
 }
 
 .armor_sheet{
     max-width: 400px; /* Largeur maximale du formulaire */
-    height: 670px;
+    height: 650px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
     border: 4px solid var(--yellow-color); /* Bordure grise */
@@ -381,12 +387,12 @@ legend{
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 760px;
+    max-height: 860px;
 }
 
 .item_sheet{
     max-width: 400px; /* Largeur maximale du formulaire */
-    height: 470px;
+    height: 580px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
     border: 4px solid var(--yellow-color); /* Bordure grise */
@@ -402,13 +408,13 @@ legend{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-height: 760px;
+    max-height: 860px;
 }
 
 
 .enemy_sheet{
     max-width: 600px; /* Largeur maximale du formulaire */
-    height: 670px;
+    height: 730px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
     border: 4px solid var(--yellow-color); /* Bordure grise */
@@ -875,8 +881,11 @@ h5{
 }
 
 h6{
-    font-size: 32px;
+    font-size: 28px;
     letter-spacing: 3px;
+    text-align: center;
+    text-wrap: wrap;
+    padding: 0 1rem;
 }
 
 .title-card{
@@ -898,11 +907,11 @@ h6{
     width: 230px;
     height: 150px;
     overflow: hidden;
-    background-color: var(--light-gold-color);
+    background-color: var(--card-bg);
     background-image: url('/assets/images/avatar3.png');
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    background-size: 55%;
+    background-position: bottom;
     border-radius: 1rem;
     margin: 0.5rem auto;
     border: 3px solid var(--yellow-color);
@@ -917,6 +926,12 @@ h6{
 .stat-lign{
     display: flex;
     flex-direction: row;
+}
+
+.text-stat{
+    &>p{
+        font-size: 24px;
+    }
 }
 
 .stat_char_user{
@@ -1050,3 +1065,293 @@ p{
 .custom-checkbox:focus {
     outline: none; /* Supprimer l'outline lors du focus */
   }
+
+
+
+/*################################################################################*/
+/*########## ARMOR USER ##########################################################*/
+/*################################################################################*/
+
+.armor_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    border: 3px solid var(--ultra-light-yellow);
+}
+
+.text-stat-armor{
+    &>p{
+        font-size: 20px;
+    }
+}
+
+
+/* CSS pour les armures de type light */
+.armor_sheet_user.light {
+    background-image: url("/assets/images/background/cross-scratches.png");
+    background-color: var(--dark-green);
+}
+
+/* CSS pour les armures de type medium */
+.armor_sheet_user.medium {
+    background-image: url("/assets/images/background/large-leather.png");
+    background-color: var(--brown-leather);
+}
+
+/* CSS pour les armures de type heavy */
+.armor_sheet_user.heavy {
+    background-image: url("/assets/images/background/brushed-alum.png");
+    background-color: var(--light-grey);
+}
+
+/* Styles pour les armures uniques */
+.armor_sheet_user.unique {
+    border: 3px solid;
+    border-radius: 1rem;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+    &>.title-card{
+        &>h6{
+        color: var(--ultra-light-yellow);
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 0.5px;
+        text-shadow: 0 0 10px black;
+        }
+    }
+}
+
+
+
+  
+@keyframes borderAnimation {
+    0% { border-color: var(--gold-color); }
+    50% { border-color: var(--light-gold-color); }
+    100% { border-color: var(--gold-color); }
+}
+
+@keyframes shadowAnimation {
+    0% { box-shadow: 0 0 35px var(--gold-color); }
+    50% { box-shadow: 0 0 35px var(--light-gold-color); }
+    100% { box-shadow: 0 0 35px var(--gold-color); }
+}
+
+
+
+
+
+
+/* Styles pour les armures non uniques */
+/* .armor_sheet_user.non-unique {
+    
+} */
+
+
+.armor_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.weapon_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.item_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.spell_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.enemy_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.img_card.unique{
+    animation: borderAnimation 2s infinite alternate;
+}
+
+
+.instruction{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.armor-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &>p{
+        font-size: 32px;
+        color: var(--ultra-light-yellow);
+        text-shadow: 0 0 10px var(--gold-color);
+        letter-spacing: 3px;
+        transform: translateY(5px);
+    }
+}
+
+.sample{
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--yellow-color);
+    border-radius: 3rem;
+}
+
+.sample.light{
+    background-image: url("/assets/images/background/cross-scratches.png");
+    background-color: var(--dark-green);
+}
+
+.sample.medium{
+    background-image: url("/assets/images/background/large-leather.png");
+    background-color: var(--brown-leather);
+}
+
+.sample.heavy{
+    background-image: url("/assets/images/background/brushed-alum.png");
+    background-color: var(--light-grey);
+}
+
+.sample.unique{
+    background-color: #ffffff70;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+}
+
+.unique-text{
+    color: var(--ultra-light-yellow);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1.5px;
+    text-shadow: 0 0 15px black;
+    letter-spacing: 3px;
+}
+
+.def-text{
+    font-size: 24px;
+}
+
+.physical_resistance{
+    color: var(--card-bg);
+}
+
+.magical_resistance{
+    color: var(--blue-color);
+}
+
+/*########################################*/
+/*########## ARMOR USER END ##############*/
+/*########################################*/

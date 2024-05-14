@@ -11,7 +11,13 @@
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" value="<?= $character['name'] ?>">
             </div>
-            <div class="img_card"><img src="<?php echo '/'.$character['image_path']; ?>" alt="<?php echo $character['name']; ?>"></div>
+
+            <!-- onerror="hideError()" style="display: none;" à mettre dans src d'une image, cela évite d'afficher l'icône avec message d'erreur si image non chargée mais cela ne m'affiche plus l'aperçu de l'image-->
+
+            <div class="img_card">
+                <img src="<?php echo '/'.$character['image_path']; ?>" alt="<?php echo $character['name']; ?>">
+            </div>
+            
             <div class="lvlexp">
                 <div class="labeltop">
                     <label for="level">Niveau:</label>
