@@ -11,6 +11,7 @@
     --brown-dark: #552a18;
     --brown-dark2: #331609;
     --brown-light: #894629;
+    --brown-light2: #b66f51;
     --brown-leather: #503225;
 
     --brown-dark-opa: #552a18de;
@@ -28,6 +29,52 @@
 
     --dark-grey: #252525;
 }
+
+/* Style de base pour le select */
+select {
+    padding: 8px;
+    border: 3px solid var(--yellow-color);
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Garantit que la largeur inclut le padding */
+    margin-bottom: 1rem;
+    background-color: var(--brown-dark2);
+    color: var(--ultra-light-yellow);
+    font-family: Bangers;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  
+  /* Style du hover */
+  select:hover {
+    border-color: var(--gold-color);
+  }
+  
+  /* Style du focus */
+  select:focus {
+    border-color: var(--light-gold-color);
+    outline: none;
+  }
+  
+  /* Style des options */
+  select option {
+    padding: 8px;
+    letter-spacing: 2px;
+  }
+  
+  /* Style du bouton déroulant */
+  select::-ms-expand {
+    display: none;
+  }
+  
+  /* Style du triangle déroulant (pour les navigateurs WebKit) */
+  select option:checked::after {
+    content: ' ✓';
+    color: #2ecc71;
+    font-weight: bold;
+  }
 
 /* Barre de défilement */
 /* Chrome, Safari, Edge */
@@ -1087,6 +1134,13 @@ p{
     height: 420px;
     border-radius: 1rem;
     border: 3px solid var(--ultra-light-yellow);
+    &>.img_card{
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+    }
 }
 
 .text-stat-armor{
@@ -1180,105 +1234,7 @@ p{
     }
 }
 
-.weapon_sheet{
-    .img_card{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 230px;
-        height: 150px;
-        overflow: hidden;
-        background-color: var(--card-bg);
-        background-image: url('/assets/images/background/pointint.png');
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center;
-        border-radius: 1rem;
-        margin: 0.5rem auto;
-        border: 3px solid var(--yellow-color);
-        &>img{
-            width: 230px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-    }
-}
 
-.item_sheet{
-    .img_card{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 230px;
-        height: 150px;
-        overflow: hidden;
-        background-color: var(--card-bg);
-        background-image: url('/assets/images/background/pointint.png');
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center;
-        border-radius: 1rem;
-        margin: 0.5rem auto;
-        border: 3px solid var(--yellow-color);
-        &>img{
-            width: 230px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-    }
-}
-
-.spell_sheet{
-    .img_card{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 230px;
-        height: 150px;
-        overflow: hidden;
-        background-color: var(--card-bg);
-        background-image: url('/assets/images/background/pointint.png');
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center;
-        border-radius: 1rem;
-        margin: 0.5rem auto;
-        border: 3px solid var(--yellow-color);
-        &>img{
-            width: 230px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-    }
-}
-
-.enemy_sheet{
-    .img_card{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 230px;
-        height: 150px;
-        overflow: hidden;
-        background-color: var(--card-bg);
-        background-image: url('/assets/images/background/pointint.png');
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: center;
-        border-radius: 1rem;
-        margin: 0.5rem auto;
-        border: 3px solid var(--yellow-color);
-        &>img{
-            width: 230px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-    }
-}
 
 .img_card.unique{
     animation: borderAnimation 2s infinite alternate;
@@ -1355,3 +1311,325 @@ p{
 /*########################################*/
 /*########## ARMOR USER END ##############*/
 /*########################################*/
+
+
+/*################################################################################*/
+/*########## WEAPON USER #########################################################*/
+/*################################################################################*/
+
+.icon-weapon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 180px;
+}
+
+.weapon_icon{
+    width: 50px;
+    height: 70px;
+}
+
+.allstat{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat_weapon_user{
+    background-image: url("/assets/images/stat_bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5rem 2rem 0 2rem;
+}
+
+.weapon_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    border: 3px solid var(--ultra-light-yellow);
+    background-image: url('/assets/images/background/dark-wood.png');
+    background-color: var(--brown-light2);
+    &>.img_card{
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+    }
+}
+
+.text-stat-weapon{
+    &>p{
+        font-size: 20px;
+    }
+}
+
+/* CSS pour les armes de type sword */
+.weapon_icon.sword {
+    background-image: url("/assets/images/icon/sword.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CSS pour les armes de type magique */
+.weapon_icon.magical {
+    background-image: url("/assets/images/icon/wand.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CSS pour les armes de type arc */
+.weapon_icon.bow {
+    background-image: url("/assets/images/icon/bow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CSS pour les armes de type hache */
+.weapon_icon.axe {
+    background-image: url("/assets/images/icon/axe.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CSS pour les armes de type dague */
+.weapon_icon.dagger {
+    background-image: url("/assets/images/icon/dagger.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* CSS pour les armes de type marteau */
+.weapon_icon.hammer {
+    background-image: url("/assets/images/icon/hammer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Styles pour les armures uniques */
+.weapon_sheet_user.unique {
+    border: 3px solid;
+    border-radius: 1rem;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+    &>.title-card{
+        &>h6{
+        color: var(--ultra-light-yellow);
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 0.5px;
+        text-shadow: 0 0 10px black;
+        }
+    }
+}
+
+
+
+  
+@keyframes borderAnimation {
+    0% { border-color: var(--gold-color); }
+    50% { border-color: var(--light-gold-color); }
+    100% { border-color: var(--gold-color); }
+}
+
+@keyframes shadowAnimation {
+    0% { box-shadow: 0 0 35px var(--gold-color); }
+    50% { box-shadow: 0 0 35px var(--light-gold-color); }
+    100% { box-shadow: 0 0 35px var(--gold-color); }
+}
+
+
+
+.weapon_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+
+
+.img_card.unique{
+    animation: borderAnimation 2s infinite alternate;
+}
+
+
+.instruction{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.weapon-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &>p{
+        font-size: 32px;
+        color: var(--ultra-light-yellow);
+        text-shadow: 0 0 10px var(--gold-color);
+        letter-spacing: 3px;
+        transform: translateY(5px);
+    }
+}
+
+.sample{
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--yellow-color);
+    border-radius: 3rem;
+}
+
+.sample.light{
+    background-image: url("/assets/images/background/cross-scratches.png");
+    background-color: var(--dark-green);
+}
+
+.sample.medium{
+    background-image: url("/assets/images/background/large-leather.png");
+    background-color: var(--brown-leather);
+}
+
+.sample.heavy{
+    background-image: url("/assets/images/background/brushed-alum.png");
+    background-color: var(--light-grey);
+}
+
+.sample.unique{
+    background-color: #ffffff70;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+}
+
+.unique-text{
+    color: var(--ultra-light-yellow);
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1.5px;
+    text-shadow: 0 0 15px black;
+    letter-spacing: 3px;
+}
+
+.atk-text{
+    font-size: 24px;
+}
+
+.physical_damage{
+    color: var(--card-bg);
+}
+
+.elemental_damage{
+    color: var(--blue-color);
+}
+
+/*########################################*/
+/*########## WEAPON USER END #############*/
+/*########################################*/
+
+
+
+.item_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.spell_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}
+
+.enemy_sheet{
+    .img_card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 230px;
+        height: 150px;
+        overflow: hidden;
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+        border-radius: 1rem;
+        margin: 0.5rem auto;
+        border: 3px solid var(--yellow-color);
+        &>img{
+            width: 230px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+}

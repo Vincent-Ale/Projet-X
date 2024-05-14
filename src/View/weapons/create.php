@@ -14,7 +14,14 @@
 
             <div class="type_wpn">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type">
+                <select id="type" name="type">
+                    <option value="sword">Epée</option>
+                    <option value="magical">Magique</option>
+                    <option value="bow">Arc</option>
+                    <option value="axe">Hache</option>
+                    <option value="dagger">Dague</option>
+                    <option value="hammer">Marteau</option>
+                </select>
             </div>
 
             <div class="phy_dmg">

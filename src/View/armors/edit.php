@@ -16,9 +16,13 @@
                 <img src="<?php echo '/'.$armor['image_path']; ?>" alt="<?php echo $armor['name']; ?>">
             </div>
 
-            <div class="type_wpn">
+            <div class="type_armor">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type" value="<?= $armor['type'] ?>">
+                <select id="type" name="type">
+                    <option value="Light" <?php if ($armor['type'] === 'Light') echo 'selected'; ?>>Light</option>
+                    <option value="Medium" <?php if ($armor['type'] === 'Medium') echo 'selected'; ?>>Medium</option>
+                    <option value="Heavy" <?php if ($armor['type'] === 'Heavy') echo 'selected'; ?>>Heavy</option>
+                </select>
             </div>
 
             <div class="phy_resist">

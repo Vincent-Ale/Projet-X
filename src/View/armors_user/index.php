@@ -29,7 +29,7 @@
         <div class="title-card">
             <h6><?= $armor["name"] ?></h6>
         </div>
-        <div class="img_card_armor <?= $armor["unique"] ? 'unique' : 'non-unique' ?>"><img src="<?php echo $armor['image_path']; ?>" alt=""></div>
+        <div class="img_card <?= $armor["unique"] ? 'unique' : 'non-unique' ?>"><img src="<?php echo $armor['image_path']; ?>" alt=""></div>
         <div class="stat_char_user">
             <p class="def-text">Défense</p>
             <div class="stat-lign">

@@ -18,7 +18,11 @@
 
             <div class="type_spell">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type" value="<?= $spell['type'] ?>">
+                <select id="type" name="type">
+                    <option value="offensive" <?php if ($weapon['type'] === 'offensive') echo 'selected'; ?>>Offensif</option>
+                    <option value="defensive" <?php if ($weapon['type'] === 'defensive') echo 'selected'; ?>>Défensif</option>
+                    <option value="support" <?php if ($weapon['type'] === 'support') echo 'selected'; ?>>Support</option>
+                </select>
             </div>
 
             <div class="power">

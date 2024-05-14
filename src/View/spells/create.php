@@ -12,9 +12,13 @@
 
             <div class="img_card"><img src="" alt=""></div>
 
-            <div class="type_wpn">
+            <div class="type_spell">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type">
+                <select id="type" name="type">
+                    <option value="offensive">Offensif</option>
+                    <option value="defensive">Défensif</option>
+                    <option value="support">Support</option>
+                </select>
             </div>
 
             <div class="power">

@@ -18,7 +18,14 @@
 
             <div class="type_wpn">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type" value="<?= $weapon['type'] ?>">
+                <select id="type" name="type">
+                    <option value="sword" <?php if ($weapon['type'] === 'sword') echo 'selected'; ?>>Epée</option>
+                    <option value="magical" <?php if ($weapon['type'] === 'magical') echo 'selected'; ?>>Magique</option>
+                    <option value="bow" <?php if ($weapon['type'] === 'bow') echo 'selected'; ?>>Arc</option>
+                    <option value="axe" <?php if ($weapon['type'] === 'axe') echo 'selected'; ?>>Hache</option>
+                    <option value="dagger" <?php if ($weapon['type'] === 'dagger') echo 'selected'; ?>>Dague</option>
+                    <option value="hammer" <?php if ($weapon['type'] === 'hammer') echo 'selected'; ?>>Marteau</option>
+                </select>
             </div>
 
             <div class="phy_dmg">

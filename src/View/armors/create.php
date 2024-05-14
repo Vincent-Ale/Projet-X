@@ -12,9 +12,13 @@
 
             <div class="img_card"><img src="" alt=""></div>
 
-            <div class="type_wpn">
+            <div class="type_armor">
                 <label for="type">Type:</label>
-                <input type="text" id="type" name="type">
+                <select id="type" name="type">
+                    <option value="Light">Léger</option>
+                    <option value="Medium">Moyen</option>
+                    <option value="Heavy">Lourd</option>
+                </select>
             </div>
 
             <div class="phy_dmg">
