@@ -19,9 +19,9 @@
             <div class="type_spell">
                 <label for="type">Type:</label>
                 <select id="type" name="type">
-                    <option value="offensive" <?php if ($weapon['type'] === 'offensive') echo 'selected'; ?>>Offensif</option>
-                    <option value="defensive" <?php if ($weapon['type'] === 'defensive') echo 'selected'; ?>>Défensif</option>
-                    <option value="support" <?php if ($weapon['type'] === 'support') echo 'selected'; ?>>Support</option>
+                    <option value="offensive" <?php if ($spell['type'] === 'offensive') echo 'selected'; ?>>Offensif</option>
+                    <option value="defensive" <?php if ($spell['type'] === 'defensive') echo 'selected'; ?>>Défensif</option>
+                    <option value="support" <?php if ($spell['type'] === 'support') echo 'selected'; ?>>Support</option>
                 </select>
             </div>
 

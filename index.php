@@ -18,6 +18,7 @@ use App\Controller\ArmorsUserController;
 use App\Controller\WeaponsUserController;
 use App\Controller\SpellsUserController;
 use App\Controller\EnemyUserController;
+use App\Controller\ItemsUserController;
 
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/.env');
@@ -60,6 +61,11 @@ $router->register('GET', '/spells_user', function() {
 
 $router->register('GET', '/enemies_user', function() {
     $controller = new EnemyUserController();
+    $controller->index();
+});
+
+$router->register('GET', '/items_user', function() {
+    $controller = new ItemsUserController();
     $controller->index();
 });
 

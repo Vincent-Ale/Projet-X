@@ -14,6 +14,8 @@
     --brown-light2: #b66f51;
     --brown-leather: #503225;
 
+    --blue-light: #13106b;
+
     --brown-dark-opa: #552a18de;
     --brown-light-opa: #894629de;
 
@@ -371,12 +373,12 @@ legend{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-height: 760px;
+    max-height: 860px;
 }
 
 .weapon_sheet{
     max-width: 400px; /* Largeur maximale du formulaire */
-    height: 650px;
+    height: 660px;
     margin-top: 40px; /* Centrage et espace autour du formulaire */
     padding: 20px; /* Espace intérieur du formulaire */
     border: 4px solid var(--yellow-color);
@@ -1438,22 +1440,6 @@ p{
 }
 
 
-
-  
-@keyframes borderAnimation {
-    0% { border-color: var(--gold-color); }
-    50% { border-color: var(--light-gold-color); }
-    100% { border-color: var(--gold-color); }
-}
-
-@keyframes shadowAnimation {
-    0% { box-shadow: 0 0 35px var(--gold-color); }
-    50% { box-shadow: 0 0 35px var(--light-gold-color); }
-    100% { box-shadow: 0 0 35px var(--gold-color); }
-}
-
-
-
 .weapon_sheet{
     .img_card{
         display: flex;
@@ -1559,30 +1545,70 @@ p{
 
 
 
-.item_sheet{
-    .img_card{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 230px;
-        height: 150px;
-        overflow: hidden;
+/*################################################################################*/
+/*########## SPELL USER ##########################################################*/
+/*################################################################################*/
+
+.allstat-spell{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat_spell_user{
+    background-image: url("/assets/images/stat_bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5rem 2rem 0 2rem;
+}
+
+.spell_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    border: 3px solid var(--ultra-light-yellow);
+    background-image: url('/assets/images/background/hexellence.png');
+    background-color: var(--dark-grey);
+    &>.img_card{
         background-color: var(--card-bg);
         background-image: url('/assets/images/background/pointint.png');
         background-repeat: no-repeat;
         background-size: 50%;
         background-position: center;
-        border-radius: 1rem;
-        margin: 0.5rem auto;
-        border: 3px solid var(--yellow-color);
-        &>img{
-            width: 230px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 3px;
+    }
+}
+
+.text-stat-spell{
+    &>p{
+        font-size: 20px;
+    }
+}
+
+
+/* Styles pour les armures uniques */
+.spell_sheet_user.unique {
+    border: 3px solid;
+    border-radius: 1rem;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+    &>.title-card{
+        &>h6{
+        color: var(--ultra-light-yellow);
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 0.5px;
+        text-shadow: 0 0 10px black;
         }
     }
 }
+
 
 .spell_sheet{
     .img_card{
@@ -1609,7 +1635,112 @@ p{
     }
 }
 
-.enemy_sheet{
+.spell-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &>p{
+        font-size: 32px;
+        color: var(--ultra-light-yellow);
+        text-shadow: 0 0 10px var(--gold-color);
+        letter-spacing: 3px;
+        transform: translateY(5px);
+    }
+}
+
+
+.power{
+    color: var(--gold-color);
+}
+
+.mana_cost{
+    color: var(--blue-color);
+}
+
+.type.offensive{
+    color: var(--red-color);
+}
+
+.type.defensive{
+    color: var(--blue-color);
+}
+
+.type.support{
+    color: var(--green-color);
+}
+
+/*########################################*/
+/*########## SPELL USER END ##############*/
+/*########################################*/
+
+
+/*################################################################################*/
+/*########## ITEM USER ###########################################################*/
+/*################################################################################*/
+
+.allstat-item{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat_item_user{
+    background-image: url("/assets/images/stat_bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5rem 2rem 0 2rem;
+}
+
+.item_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    border: 3px solid var(--ultra-light-yellow);
+    background-image: url('/assets/images/background/graphy.png');
+    background-color: var(--blue-light);
+    background-size: 50%;
+    &>.img_card{
+        background-color: var(--card-bg);
+        background-image: url('/assets/images/background/pointint.png');
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center;
+    }
+}
+
+.text-stat-item{
+    &>p{
+        font-size: 20px;
+    }
+}
+
+
+/* Styles pour les armures uniques */
+.item_sheet_user.unique {
+    border: 3px solid;
+    border-radius: 1rem;
+    animation: borderAnimation 2s infinite alternate, shadowAnimation 2s infinite alternate;
+    &>.title-card{
+        &>h6{
+        color: var(--ultra-light-yellow);
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 0.5px;
+        text-shadow: 0 0 10px black;
+        }
+    }
+}
+
+
+.item_sheet{
     .img_card{
         display: flex;
         align-items: center;
@@ -1633,3 +1764,123 @@ p{
         }
     }
 }
+
+.item-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &>p{
+        font-size: 32px;
+        color: var(--ultra-light-yellow);
+        text-shadow: 0 0 10px var(--gold-color);
+        letter-spacing: 3px;
+        transform: translateY(5px);
+    }
+}
+
+
+.power{
+    color: var(--gold-color);
+}
+
+.mana_cost{
+    color: var(--blue-color);
+}
+
+.type.offensive{
+    color: var(--red-color);
+}
+
+.type.defensive{
+    color: var(--blue-color);
+}
+
+.type.support{
+    color: var(--green-color);
+}
+
+/*########################################*/
+/*########### ITEM USER END ##############*/
+/*########################################*/
+
+
+
+/*################################################################################*/
+/*########## ENEMY USER ##########################################################*/
+/*################################################################################*/
+
+
+
+.enemy_sheet_user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Bangers;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: black;
+    margin: 2rem;
+    width: 275px;
+    height: 420px;
+    border-radius: 1rem;
+    background-image: url("/assets/images/background/gravel.png");
+    background-color: var(--brown-light2);
+    border: 3px solid var(--ultra-light-yellow);
+}
+
+
+.title-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 100px;
+    background-image: url("/assets/images/title_bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.stat_enemy_user{
+    background-image: url("/assets/images/stat_bg2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1.5rem 4rem 0 2rem;
+}
+
+.enemy_sheet_user.is_boss{
+    animation: borderAnimation2 2s infinite alternate, shadowAnimation2 2s infinite alternate;
+    &>.title-card{
+        &>h6{
+        color: var(--red-color);
+        -webkit-text-stroke-color: black;
+        -webkit-text-stroke-width: 0.5px;
+        text-shadow: 0 0 10px black;
+        }
+    }
+}
+
+.sample.boss{
+    background-color: #ffffff70;
+    animation: borderAnimation2 2s infinite alternate, shadowAnimation2 2s infinite alternate;
+}
+
+@keyframes borderAnimation2 {
+    0% { border-color: var(--gold-color); }
+    50% { border-color: var(--red-color); }
+    100% { border-color: var(--gold-color); }
+}
+
+@keyframes shadowAnimation2 {
+    0% { box-shadow: 0 0 35px var(--gold-color); }
+    50% { box-shadow: 0 0 35px var(--red-color); }
+    100% { box-shadow: 0 0 35px var(--gold-color); }
+}
+
+
+/*########################################*/
+/*########## ENEMY USER END ##############*/
+/*########################################*/
