@@ -9,6 +9,11 @@ services:
       - ./src:/var/www/html
     ports:
       - "8080:80"
+    environment:
+      DB_HOST: localhost
+      DB_NAME: naheulbeuk
+      DB_USER: root
+      DB_PASS: ''
     depends_on:
       - db
 
@@ -16,13 +21,14 @@ services:
     image: mysql:8.0
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: my_database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
+       MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: naheulbeuk
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ''
     volumes:
       - db_data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   db_data:
+
