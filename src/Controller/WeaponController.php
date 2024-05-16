@@ -151,6 +151,17 @@ class WeaponController {
     }
 
     public function delete($id) {
+
+        $weapon = $this->model->getWeaponById($id);
+        $image_path = $weapon['image_path'];
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
+
         $this->model->deleteWeapon($id);
         header('Location: /weapons');
     }

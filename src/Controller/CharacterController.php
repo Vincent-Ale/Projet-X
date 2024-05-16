@@ -239,9 +239,20 @@ class CharacterController {
     }
 
     public function delete($id) {
+        $character = $this->model->getCharacterById($id);
+        $image_path = $character['image_path'];
+
         $this->model->deleteWeaponToCharacter($id);
         $this->model->deleteArmorToCharacter($id);
         $this->model->deleteSpellToCharacter($id);
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
+
         $this->model->deleteCharacter($id);
         header('Location: /characters');
     }

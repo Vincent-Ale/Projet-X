@@ -151,6 +151,16 @@ class ArmorController {
     }
 
     public function delete($id) {
+
+        $armor = $this->model->getArmorById($id);
+        $image_path = $armor['image_path'];
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
         $this->model->deleteArmor($id);
         header('Location: /armors');
     }
