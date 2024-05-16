@@ -151,6 +151,16 @@ class SpellController {
     }
 
     public function delete($id) {
+
+        $spell = $this->model->getSpellById($id);
+        $image_path = $spell['image_path'];
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
         $this->model->deleteSpell($id);
         header('Location: /spells');
     }

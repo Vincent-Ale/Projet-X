@@ -149,6 +149,16 @@ class ItemController {
     }
 
     public function delete($id) {
+
+        $item = $this->model->getItemById($id);
+        $image_path = $item['image_path'];
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
         $this->model->deleteItem($id);
         header('Location: /items');
     }
