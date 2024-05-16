@@ -22,18 +22,20 @@ class ArmorModel {
         $type,
         $physical_resistance,
         $magical_resistance,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
-        INSERT INTO `armor` (name, type, physical_resistance, magical_resistance, `unique`)
-        VALUES (?, ?, ?, ?, ?)"
+        INSERT INTO `armor` (name, type, physical_resistance, magical_resistance, `unique`, image_path)
+        VALUES (?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $name,
             $type,
             $physical_resistance,
             $magical_resistance,
-            $unique
+            $unique,
+            $image_path
         ]);
     }
 
@@ -43,7 +45,8 @@ class ArmorModel {
         $type,
         $physical_resistance,
         $magical_resistance,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `armor` SET 
@@ -51,8 +54,8 @@ class ArmorModel {
         type = :type,
         physical_resistance = :physical_resistance,
         magical_resistance = :magical_resistance,
-        `unique` = :unique
-        WHERE id = :id"
+        `unique` = :unique,
+        image_path = :image_path WHERE id = :id"
     );
     $stmt->execute([
         'name' => $name,
@@ -60,6 +63,7 @@ class ArmorModel {
         'physical_resistance' => $physical_resistance,
         'magical_resistance' => $magical_resistance,
         'unique' => $unique,
+        'image_path' => $image_path,
         'id' => $id
     ]);
     }

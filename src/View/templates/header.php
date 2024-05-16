@@ -11,7 +11,7 @@ $dateString = $date->format('Y-m-d H:i:s');
     <link rel="stylesheet" href="<?= '/assets/css/style.css?version='.$dateString ?>">
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=Bangers:300,400,500,600,700,800">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
@@ -42,9 +42,10 @@ $dateString = $date->format('Y-m-d H:i:s');
             <ul>
                 <li class="choice" >Choisir une catégorie : </li>
                 <li><a href="/characters">Les Personnages</a></li>
-                <li><a href="/armors">Les Armures</a></li>
                 <li><a href="/weapons">Les Armes</a></li>
+                <li><a href="/armors">Les Armures</a></li>
                 <li><a href="/spells">Les Sorts</a></li>
+                <li><a href="/items">Les Objets</a></li>
                 <li><a href="/enemies">Les Méchants</a></li>
             </ul>
         </div>

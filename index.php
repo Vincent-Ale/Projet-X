@@ -10,6 +10,7 @@ use App\Controller\CharacterController;
 use App\Controller\WeaponController;
 use App\Controller\ArmorController;
 use App\Controller\SpellController;
+use App\Controller\ItemController;
 use App\Controller\EnemyController;
 use App\Controller\CodexController;
 use App\Controller\CharactersUserController;
@@ -17,6 +18,7 @@ use App\Controller\ArmorsUserController;
 use App\Controller\WeaponsUserController;
 use App\Controller\SpellsUserController;
 use App\Controller\EnemyUserController;
+use App\Controller\ItemsUserController;
 
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/.env');
@@ -59,6 +61,11 @@ $router->register('GET', '/spells_user', function() {
 
 $router->register('GET', '/enemies_user', function() {
     $controller = new EnemyUserController();
+    $controller->index();
+});
+
+$router->register('GET', '/items_user', function() {
+    $controller = new ItemsUserController();
     $controller->index();
 });
 
@@ -199,6 +206,39 @@ $router->register('POST', '/spells/update', function() {
 // Suppression d'un personnage
 $router->register('GET', '/spells/delete/{id}', function($id) {
     $controller = new SpellController();
+    $controller->delete($id);
+});
+
+
+// Items Router ====================================
+
+$router->register('GET', '/items', function() {
+    $controller = new ItemController();
+    $controller->index();
+});
+
+$router->register('GET', '/items/create', function() {
+    $controller = new ItemController();
+    $controller->create();
+});
+
+$router->register('GET', '/items/edit/{id}', function($id) {
+    $controller = new ItemController();
+    $controller->edit($id);
+});
+
+$router->register('POST', '/items/save', function() {
+    $controller = new ItemController();
+    $controller->store();
+});
+
+$router->register('POST', '/items/update', function() {
+    $controller = new ItemController();
+    $controller->update();
+});
+
+$router->register('GET', '/items/delete/{id}', function($id) {
+    $controller = new ItemController();
     $controller->delete($id);
 });
 

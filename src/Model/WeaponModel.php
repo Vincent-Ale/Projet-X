@@ -22,18 +22,20 @@ class WeaponModel {
         $type,
         $physical_damage,
         $elemental_damage,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
-        INSERT INTO `weapon` (name, type, physical_damage, elemental_damage, `unique`)
-        VALUES (?, ?, ?, ?, ?)"
+        INSERT INTO `weapon` (name, type, physical_damage, elemental_damage, `unique`, image_path)
+        VALUES (?, ?, ?, ?, ?, ?)"
         );
         $stmt->execute([
             $name,
             $type,
             $physical_damage,
             $elemental_damage,
-            $unique
+            $unique,
+            $image_path
         ]);
     }
 
@@ -43,7 +45,8 @@ class WeaponModel {
         $type,
         $physical_damage,
         $elemental_damage,
-        $unique
+        $unique,
+        $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `weapon` SET 
@@ -51,7 +54,8 @@ class WeaponModel {
         type = :type,
         physical_damage = :physical_damage,
         elemental_damage = :elemental_damage,
-        `unique` = :unique
+        `unique` = :unique,
+        image_path = :image_path
         WHERE id = :id"
     );
     $stmt->execute([
@@ -60,6 +64,7 @@ class WeaponModel {
         'physical_damage' => $physical_damage,
         'elemental_damage' => $elemental_damage,
         'unique' => $unique,
+        'image_path' => $image_path,
         'id' => $id
     ]);
     }

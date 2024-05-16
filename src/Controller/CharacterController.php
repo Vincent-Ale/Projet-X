@@ -36,14 +36,14 @@ class CharacterController {
     public function store() {
         $name = $_POST['name'];
         $level = $_POST['level'];
-        $exp = $_POST['exp'];
-        $exp_max = $_POST['exp_max'];
         $health = $_POST['health'];
-        $health_max = $_POST['health_max'];
+        $health_max = $health;
         $mana = $_POST['mana'];
-        $mana_max = $_POST['mana_max'];
+        $mana_max = $mana;
         $stamina = $_POST['stamina'];
-        $stamina_max = $_POST['stamina_max'];
+        $stamina_max = $stamina;
+        $exp = 0;
+        $exp_max = $_POST['exp_max'];
 
         $image_path = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -66,7 +66,7 @@ class CharacterController {
             }
         }
 
-        $this->model->addCharacter($name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
+        $this->model->addCharacter($name, $level, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $exp, $exp_max, $image_path);
 
         $last_id = $this->model->getLastCharacterID();
 
@@ -115,25 +115,97 @@ class CharacterController {
         include 'src/View/characters/edit.php';
     }
     
+    
     public function update() {
             // Récupérez les données du formulaire
             $id = $_POST['id'];
             $name = $_POST['name'];
             $level = $_POST['level'];
-            $exp = $_POST['exp'];
-            $exp_max = $_POST['exp_max'];
             $health = $_POST['health'];
-            $health_max = $_POST['health_max'];
+            $health_max = $health;
             $mana = $_POST['mana'];
-            $mana_max = $_POST['mana_max'];
+            $mana_max = $mana;
             $stamina = $_POST['stamina'];
-            $stamina_max = $_POST['stamina_max'];
+            $stamina_max = $stamina;
+            $exp = 0;
+            $exp_max = $_POST['exp_max'];
         
-            $image_path = $_FILES['image'];
-              
-        // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
-        $this->model->updateCharacter($id, $name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
-    
+            // Obtenez les détails du personnage existant
+            $character = $this->model->getCharacterById($id);
+            $image_path = $character['image_path']; // Utilisez l'image existante par défaut
+        
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                // Traitez l'image téléchargée
+                $uploadDir = 'assets/images';
+                $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid() . '_' . $name . '.' . $extension;
+                $filePath = $uploadDir . DIRECTORY_SEPARATOR . $filename;
+        
+                if (!is_dir($uploadDir)) {
+                    echo "Le répertoire d'upload n'existe pas.";
+                    return;
+                }
+        
+                if (move_uploaded_file($_FILES['image']['tmp_name'], $filePath)) {
+                    // Vérifiez l'extension et le type MIME de l'image
+                    $fileType = mime_content_type($filePath);
+                    
+                    if ($fileType == 'image/jpeg') {
+                        $sourceImage = imagecreatefromjpeg($filePath);
+                    } elseif ($fileType == 'image/png') {
+                        $sourceImage = imagecreatefrompng($filePath);
+                    } elseif ($fileType == 'image/gif') {
+                        $sourceImage = imagecreatefromgif($filePath);
+                    } else {
+                        // Type d'image non pris en charge
+                        echo "Le format d'image n'est pas pris en charge.";
+                        return;
+                    }
+        
+                    // Assurez-vous que l'image est correctement chargée
+                    if (!$sourceImage) {
+                        echo "Erreur lors du chargement de l'image.";
+                        return;
+                    }
+        
+                    // Recadrer l'image selon les données de recadrage
+                    $cropX = isset($_POST['crop_x']) ? floatval($_POST['crop_x']) : 0;
+                    $cropY = isset($_POST['crop_y']) ? floatval($_POST['crop_y']) : 0;
+                    $cropWidth = isset($_POST['crop_width']) ? floatval($_POST['crop_width']) : 0;
+                    $cropHeight = isset($_POST['crop_height']) ? floatval($_POST['crop_height']) : 0;
+        
+                    $croppedImage = imagecrop($sourceImage, [
+                        'x' => $cropX,
+                        'y' => $cropY,
+                        'width' => $cropWidth,
+                        'height' => $cropHeight,
+                    ]);
+        
+                    if ($croppedImage) {
+                        // Enregistrer l'image recadrée
+                        imagejpeg($croppedImage, $filePath);
+                    }
+        
+                    // Libérer les ressources
+                    imagedestroy($sourceImage);
+                    imagedestroy($croppedImage);
+                } else {
+                    echo "Erreur lors du téléchargement de l'image.";
+                    return;
+                }
+        
+                // Supprimez l'ancienne image si elle existe
+                if ($character['image_path'] && file_exists($character['image_path'])) {
+                    unlink($character['image_path']);
+                }
+        
+                // Mettez à jour le chemin de l'image
+                $image_path = $filePath;
+            }
+        
+            // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
+            $this->model->updateCharacter($id, $name, $level, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $exp, $exp_max, $image_path);
+       
 
         // Code pour delete toutes les entrées des tables de jointures avec le personnage concerné
         
@@ -167,9 +239,20 @@ class CharacterController {
     }
 
     public function delete($id) {
+        $character = $this->model->getCharacterById($id);
+        $image_path = $character['image_path'];
+
         $this->model->deleteWeaponToCharacter($id);
         $this->model->deleteArmorToCharacter($id);
         $this->model->deleteSpellToCharacter($id);
+
+        // Supprimer l'image associée, si elle existe
+        if (!empty($image_path)) {
+            if (file_exists($image_path)) {
+                unlink($image_path); // Suppression du fichier image
+            }
+        }
+
         $this->model->deleteCharacter($id);
         header('Location: /characters');
     }
