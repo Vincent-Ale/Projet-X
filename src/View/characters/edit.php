@@ -24,11 +24,7 @@
                     <input type="number" id="level" name="level" value="<?= $character['level'] ?>">
                 </div>
                 <div class="labeltop">
-                    <label for="exp">EXP:</label>
-                    <input type="number" id="exp" name="exp" value="<?= $character['EXP'] ?>">
-                </div>
-                <div class="labeltop">
-                    <label for="exp_max">EXP Max:</label>
+                    <label for="exp_max">EXP par niveau:</label>
                     <input type="number" id="exp_max" name="exp_max" value="<?= $character['EXP_max'] ?>">
                 </div>
             </div>
@@ -37,29 +33,17 @@
                     <label for="health">Santé:</label>
                     <input type="number" id="health" name="health" value="<?= $character['health'] ?>">
                 </div>
-                <div class="labeltop">
-                    <label for="health_max">Santé Max:</label>
-                    <input type="number" id="health_max" name="health_max" value="<?= $character['health_max'] ?>">
-                </div>
             </div>
             <div class="mana">
                 <div class="labeltop">
                     <label for="mana">Mana:</label>
                     <input type="number" id="mana" name="mana" value="<?= $character['mana'] ?>">
                 </div>
-                <div class="labeltop">
-                    <label for="mana_max">Mana Max:</label>
-                    <input type="number" id="mana_max" name="mana_max" value="<?= $character['mana_max'] ?>">
-                </div>
             </div>
             <div class="stamina">
                 <div class="labeltop">
                     <label for="stamina">Endurance:</label>
                     <input type="number" id="stamina" name="stamina" value="<?= $character['stamina'] ?>">
-                </div>
-                <div class="labeltop">
-                    <label for="stamina_max">Endurance Max:</label>
-                    <input type="number" id="stamina_max" name="stamina_max" value="<?= $character['stamina_max'] ?>">
                 </div>
             </div>
 

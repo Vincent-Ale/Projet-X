@@ -36,14 +36,14 @@ class CharacterController {
     public function store() {
         $name = $_POST['name'];
         $level = $_POST['level'];
-        $exp = $_POST['exp'];
-        $exp_max = $_POST['exp_max'];
         $health = $_POST['health'];
-        $health_max = $_POST['health_max'];
+        $health_max = $health;
         $mana = $_POST['mana'];
-        $mana_max = $_POST['mana_max'];
+        $mana_max = $mana;
         $stamina = $_POST['stamina'];
-        $stamina_max = $_POST['stamina_max'];
+        $stamina_max = $stamina;
+        $exp = 0;
+        $exp_max = $_POST['exp_max'];
 
         $image_path = null;
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -66,7 +66,7 @@ class CharacterController {
             }
         }
 
-        $this->model->addCharacter($name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
+        $this->model->addCharacter($name, $level, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $exp, $exp_max, $image_path);
 
         $last_id = $this->model->getLastCharacterID();
 
@@ -121,14 +121,14 @@ class CharacterController {
             $id = $_POST['id'];
             $name = $_POST['name'];
             $level = $_POST['level'];
-            $exp = $_POST['exp'];
-            $exp_max = $_POST['exp_max'];
             $health = $_POST['health'];
-            $health_max = $_POST['health_max'];
+            $health_max = $health;
             $mana = $_POST['mana'];
-            $mana_max = $_POST['mana_max'];
+            $mana_max = $mana;
             $stamina = $_POST['stamina'];
-            $stamina_max = $_POST['stamina_max'];
+            $stamina_max = $stamina;
+            $exp = 0;
+            $exp_max = $_POST['exp_max'];
         
             // Obtenez les détails du personnage existant
             $character = $this->model->getCharacterById($id);
@@ -204,7 +204,7 @@ class CharacterController {
             }
         
             // Appelez la méthode updateCharacter avec les nouvelles données, y compris le chemin de l'image
-            $this->model->updateCharacter($id, $name, $level, $exp, $exp_max, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $image_path);
+            $this->model->updateCharacter($id, $name, $level, $health, $health_max, $mana, $mana_max, $stamina, $stamina_max, $exp, $exp_max, $image_path);
        
 
         // Code pour delete toutes les entrées des tables de jointures avec le personnage concerné

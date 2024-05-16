@@ -496,7 +496,7 @@ legend{
 }
 
 .overflow{
-    overflow-y: auto;
+    overflow-y: scroll;
     max-height: 580px;
     width: 100%;
     max-width: 400px;
@@ -540,7 +540,7 @@ label[for="name"] {
 }
 #name {
     text-align: center;
-    width: 300px;
+    width: 250px;
     font-family: Bangers;
     font-size: 24px;
     font-weight: 500;
@@ -564,7 +564,7 @@ input[type="text"],
 input[type="number"],
 input[type="password"],
 input[type="email"] {
-    width: 100%; /* Les champs prennent toute la largeur du formulaire */
+    width: 250px; /* Les champs prennent toute la largeur du formulaire */
     padding: 10px; /* Espace intérieur des champs */
     margin-bottom: 10px; /* Espace en dessous de chaque champ */
     border: 3px solid var(--yellow-color); /* Bordure grise */
@@ -648,29 +648,29 @@ input[type="submit"]:hover {
 .lvlexp{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    justify-content: center;
+    gap: 2rem;
+    margin: 20px 0 10px 0;
 }
 
 .vie{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 10px;
-    gap: 0.5rem;
 }
 
 .mana{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
 .stamina{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .up-img{

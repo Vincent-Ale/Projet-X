@@ -108,14 +108,14 @@ class CharacterModel {
     public function addCharacter(
         $name,
         $level,
-        $exp,
-        $exp_max,
         $health,
         $health_max,
         $mana,
         $mana_max,
         $stamina,
         $stamina_max,
+        $exp,
+        $exp_max,
         $image_path
         ) {
         $stmt = $this->db->prepare("
@@ -125,14 +125,14 @@ class CharacterModel {
         $stmt->execute([
             $name,
             $level,
-            $exp,
-            $exp_max,
             $health,
             $health_max,
             $mana,
             $mana_max,
             $stamina,
             $stamina_max,
+            $exp,
+            $exp_max,
             $image_path
         ]);
     }
@@ -223,41 +223,41 @@ class CharacterModel {
         $id,
         $name,
         $level,
-        $exp,
-        $exp_max,
         $health,
         $health_max,
         $mana,
         $mana_max,
         $stamina,
         $stamina_max,
+        $exp,
+        $exp_max,
         $image_path
         ) {
         $stmt = $this->db->prepare("
         UPDATE `character` SET 
         name = :name,
         level = :level,
-        exp = :exp,
-        exp_max = :exp_max,
         health = :health,
         health_max = :health_max,
         mana = :mana,
         mana_max = :mana_max,
         stamina = :stamina,
         stamina_max = :stamina_max,
+        exp = :exp,
+        exp_max = :exp_max,
         image_path = :image_path WHERE id = :id"
     );
     $stmt->execute([
         'name' => $name,
         'level' => $level,
-        'exp' => $exp,
-        'exp_max' => $exp_max,
         'health' => $health,
         'health_max' => $health_max,
         'mana' => $mana,
         'mana_max' => $mana_max,
         'stamina' => $stamina,
         'stamina_max' => $stamina_max,
+        'exp' => $exp,
+        'exp_max' => $exp_max,
         'image_path' => $image_path,
         'id' => $id
     ]);

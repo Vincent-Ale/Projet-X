@@ -17,11 +17,7 @@
                         <input type="number" id="level" name="level">
                     </div>
                     <div class="labeltop">
-                        <label for="exp">EXP:</label>
-                        <input type="number" id="exp" name="exp">
-                    </div>
-                    <div class="labeltop">
-                        <label for="exp_max">EXP Max:</label>
+                        <label for="exp_max">EXP par niveau:</label>
                         <input type="number" id="exp_max" name="exp_max">
                     </div>
                 </div>
@@ -30,29 +26,17 @@
                         <label for="health">Santé:</label>
                         <input type="number" id="health" name="health">
                     </div>
-                    <div class="labeltop">
-                        <label for="health_max">Santé Max:</label>
-                        <input type="number" id="health_max" name="health_max">
-                    </div>
                 </div>
                 <div class="mana">
                     <div class="labeltop">
                         <label for="mana">Mana:</label>
                         <input type="number" id="mana" name="mana">
                     </div>
-                    <div class="labeltop">
-                        <label for="mana_max">Mana Max:</label>
-                        <input type="number" id="mana_max" name="mana_max">
-                    </div>
                 </div>
                 <div class="stamina">
                     <div class="labeltop">
                         <label for="stamina">Endurance:</label>
                         <input type="number" id="stamina" name="stamina">
-                    </div>
-                    <div class="labeltop">
-                        <label for="stamina_max">Endurance Max:</label>
-                        <input type="number" id="stamina_max" name="stamina_max">
                     </div>
                 </div>
 
