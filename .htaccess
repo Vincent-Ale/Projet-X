@@ -1,4 +1,23 @@
+# Permettre l'accès à tous
+Order Allow,Deny
+Allow from all
+
+# Nouvelle syntaxe pour Apache 2.4 et plus récent
+Require all granted
+
+# Désactiver l'indexation des fichiers
+Options -Indexes
+
+# Activer la réécriture des URL (utile pour les frameworks PHP comme Laravel)
 RewriteEngine On
+
+# Rediriger les requêtes vers index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^ index.php [L]
+
+# Protéger le fichier .htaccess lui-même
+<Files ~ "^\.ht">
+    Order allow,deny
+    Deny from all
+</Files>
