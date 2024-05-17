@@ -40,7 +40,7 @@
 
             <div class="unique">
                 <label for="unique">Unique:</label>
-                <input type="checkbox" id="unique" name="unique" <?= $weapon['unique'] ? 'checked' : '' ?> >
+                <input type="checkbox" class="custom-checkbox2" id="unique" name="unique" <?= $weapon['unique'] ? 'checked' : '' ?> >
             </div>
 
             <input type="hidden" name="crop_x" id="crop_x">

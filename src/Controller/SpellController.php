@@ -32,8 +32,14 @@ class SpellController {
         }
 
         $image_path = null;
+
+        $crop_x = isset($_POST['crop_x']) ? (int)$_POST['crop_x'] : 0;
+        $crop_y = isset($_POST['crop_y']) ? (int)$_POST['crop_y'] : 0;
+        $crop_width = isset($_POST['crop_width']) ? (int)$_POST['crop_width'] : 0;
+        $crop_height = isset($_POST['crop_height']) ? (int)$_POST['crop_height'] : 0;
+
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $upload_dir = 'assets\images'; // Chemin du dossier d'uploads
+            $upload_dir = 'assets/images'; // Chemin du dossier d'uploads
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             $filename = uniqid() . '_' . $name;
             $file_path = $upload_dir . DIRECTORY_SEPARATOR . $filename . '.' . $extension;
@@ -44,6 +50,42 @@ class SpellController {
             }
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
+                // Crop the image using GD Library
+                if ($crop_width > 0 && $crop_height > 0) {
+                    try {
+                        $src_image = imagecreatefromstring(file_get_contents($file_path));
+                        $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
+                        
+                        // Keep transparency for PNG images
+                        if ($extension === 'png') {
+                            imagealphablending($cropped_image, false);
+                            imagesavealpha($cropped_image, true);
+                            $transparent = imagecolorallocatealpha($cropped_image, 0, 0, 0, 127);
+                            imagefilledrectangle($cropped_image, 0, 0, $crop_width, $crop_height, $transparent);
+                        }
+
+                        imagecopyresampled(
+                            $cropped_image,
+                            $src_image,
+                            0, 0,
+                            $crop_x, $crop_y,
+                            $crop_width, $crop_height,
+                            $crop_width, $crop_height
+                        );
+
+                        if ($extension === 'png') {
+                            imagepng($cropped_image, $file_path);
+                        } else {
+                            imagejpeg($cropped_image, $file_path);
+                        }
+
+                        imagedestroy($src_image);
+                        imagedestroy($cropped_image);
+                    } catch (Exception $e) {
+                        echo 'Erreur lors du traitement de l\'image : ', $e->getMessage();
+                        return;
+                    }
+                }
                 $image_path = $file_path;  // Mettre à jour le chemin de l'image
             } else {
                 // Gérer l'erreur de téléchargement
@@ -74,80 +116,80 @@ class SpellController {
             $unique = 0;
         }
 
+        $crop_x = isset($_POST['crop_x']) ? (int)$_POST['crop_x'] : 0;
+        $crop_y = isset($_POST['crop_y']) ? (int)$_POST['crop_y'] : 0;
+        $crop_width = isset($_POST['crop_width']) ? (int)$_POST['crop_width'] : 0;
+        $crop_height = isset($_POST['crop_height']) ? (int)$_POST['crop_height'] : 0;
+    
         $spell = $this->model->getSpellById($id);
         $image_path = $spell['image_path']; // Utilisez l'image existante par défaut
-        
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                // Traitez l'image téléchargée
-                $uploadDir = 'assets/images';
-                $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-                $filename = uniqid() . '_' . $name . '.' . $extension;
-                $filePath = $uploadDir . DIRECTORY_SEPARATOR . $filename;
-        
-                if (!is_dir($uploadDir)) {
-                    echo "Le répertoire d'upload n'existe pas.";
-                    return;
-                }
-        
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $filePath)) {
-                    // Vérifiez l'extension et le type MIME de l'image
-                    $fileType = mime_content_type($filePath);
-                    
-                    if ($fileType == 'image/jpeg') {
-                        $sourceImage = imagecreatefromjpeg($filePath);
-                    } elseif ($fileType == 'image/png') {
-                        $sourceImage = imagecreatefrompng($filePath);
-                    } elseif ($fileType == 'image/gif') {
-                        $sourceImage = imagecreatefromgif($filePath);
-                    } else {
-                        // Type d'image non pris en charge
-                        echo "Le format d'image n'est pas pris en charge.";
+    
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            // Traitez l'image téléchargée
+            $uploadDir = 'assets/images';
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $filename = uniqid() . '_' . $name . '.' . $extension;
+            $file_path = $uploadDir . DIRECTORY_SEPARATOR . $filename;
+    
+            if (!is_dir($uploadDir)) {
+                echo "Le répertoire d'upload n'existe pas.";
+                return;
+            }
+    
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
+                // Crop the image using GD Library
+                if ($crop_width > 0 && $crop_height > 0) {
+                    try {
+                        $src_image = imagecreatefromstring(file_get_contents($file_path));
+                        $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
+                        
+                        // Keep transparency for PNG images
+                        if ($extension === 'png') {
+                            imagealphablending($cropped_image, false);
+                            imagesavealpha($cropped_image, true);
+                            $transparent = imagecolorallocatealpha($cropped_image, 0, 0, 0, 127);
+                            imagefilledrectangle($cropped_image, 0, 0, $crop_width, $crop_height, $transparent);
+                        }
+
+                        imagecopyresampled(
+                            $cropped_image,
+                            $src_image,
+                            0, 0,
+                            $crop_x, $crop_y,
+                            $crop_width, $crop_height,
+                            $crop_width, $crop_height
+                        );
+
+                        if ($extension === 'png') {
+                            imagepng($cropped_image, $file_path);
+                        } else {
+                            imagejpeg($cropped_image, $file_path);
+                        }
+
+                        imagedestroy($src_image);
+                        imagedestroy($cropped_image);
+                    } catch (Exception $e) {
+                        echo 'Erreur lors du traitement de l\'image : ', $e->getMessage();
                         return;
                     }
-        
-                    // Assurez-vous que l'image est correctement chargée
-                    if (!$sourceImage) {
-                        echo "Erreur lors du chargement de l'image.";
-                        return;
-                    }
-        
-                    // Recadrer l'image selon les données de recadrage
-                    $cropX = isset($_POST['crop_x']) ? floatval($_POST['crop_x']) : 0;
-                    $cropY = isset($_POST['crop_y']) ? floatval($_POST['crop_y']) : 0;
-                    $cropWidth = isset($_POST['crop_width']) ? floatval($_POST['crop_width']) : 0;
-                    $cropHeight = isset($_POST['crop_height']) ? floatval($_POST['crop_height']) : 0;
-        
-                    $croppedImage = imagecrop($sourceImage, [
-                        'x' => $cropX,
-                        'y' => $cropY,
-                        'width' => $cropWidth,
-                        'height' => $cropHeight,
-                    ]);
-        
-                    if ($croppedImage) {
-                        // Enregistrer l'image recadrée
-                        imagejpeg($croppedImage, $filePath);
-                    }
-        
-                    // Libérer les ressources
-                    imagedestroy($sourceImage);
-                    imagedestroy($croppedImage);
-                } else {
-                    echo "Erreur lors du téléchargement de l'image.";
-                    return;
                 }
-        
+
                 // Supprimez l'ancienne image si elle existe
                 if ($spell['image_path'] && file_exists($spell['image_path'])) {
                     unlink($spell['image_path']);
                 }
-        
-                // Mettez à jour le chemin de l'image
-                $image_path = $filePath;
+
+                $image_path = $file_path;  // Mettre à jour le chemin de l'image
+
+            } else {
+                // Gérer l'erreur de téléchargement
+                echo "Erreur lors du téléchargement de l'image.";
+                return;
             }
 
         $this->model->updateSpell($id, $name, $type, $power, $mana_cost, $unique, $image_path);
         header('Location: /spells');
+        }
     }
 
     public function delete($id) {

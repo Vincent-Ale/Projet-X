@@ -10,16 +10,12 @@
                 <input type="text" id="name" name="name">
             </div>
 
-            <div class="img_card"><img src="" alt=""></div>
+            <div class="img_card"><img src="/assets/images/avatar4.png" alt=""></div>
 
             <div class="vie">
                 <div class="labeltop">
                     <label for="health">Santé:</label>
                     <input type="number" id="health" name="health">
-                </div>
-                <div class="labeltop">
-                    <label for="health_max">Santé Max:</label>
-                    <input type="number" id="health_max" name="health_max">
                 </div>
             </div>
             <div class="mana">
@@ -27,19 +23,11 @@
                     <label for="mana">Mana:</label>
                     <input type="number" id="mana" name="mana">
                 </div>
-                <div class="labeltop">
-                    <label for="mana_max">Mana Max:</label>
-                    <input type="number" id="mana_max" name="mana_max">
-                </div>
             </div>
             <div class="stamina">
                 <div class="labeltop">
                     <label for="stamina">Endurance:</label>
                     <input type="number" id="stamina" name="stamina">
-                </div>
-                <div class="labeltop">
-                    <label for="stamina_max">Endurance Max:</label>
-                    <input type="number" id="stamina_max" name="stamina_max">
                 </div>
             </div>
             <div class="atk-def">
@@ -54,7 +42,7 @@
             </div>
             <div class="is_boss">
                 <label for="is_boss">Est un Boss:</label>
-                <input type="checkbox" id="is_boss" name="is_boss">
+                <input type="checkbox" class="custom-checkbox2" id="is_boss" name="is_boss">
             </div>
 
             <input type="hidden" name="crop_x" id="crop_x">

@@ -10,7 +10,7 @@
                     <label for="name">Nom:</label>
                     <input type="text" id="name" name="name">
                 </div>
-                <div class="img_card"><img src="" alt=""></div>
+                <div class="img_card"><img src="/assets/images/avatar4.png" alt=""></div>
                 <div class="lvlexp">
                     <div class="labeltop">
                         <label for="level">Niveau:</label>

@@ -19,6 +19,8 @@ use App\Controller\WeaponsUserController;
 use App\Controller\SpellsUserController;
 use App\Controller\EnemyUserController;
 use App\Controller\ItemsUserController;
+use App\Controller\JeuController;
+use App\Controller\AdminController;
 
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/.env');
@@ -29,6 +31,17 @@ $router = new Router();
 
 $router->register('GET', '/', function() {
     $controller = new HomeController();
+    $controller->index();
+});
+
+
+$router->register('GET', '/jeu', function() {
+    $controller = new JeuController();
+    $controller->index();
+});
+
+$router->register('GET', '/admin', function() {
+    $controller = new AdminController();
     $controller->index();
 });
 

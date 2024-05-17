@@ -10,7 +10,7 @@
                 <input type="text" id="name" name="name">
             </div>
 
-            <div class="img_card"><img src="" alt=""></div>
+            <div class="img_card"><img src="/assets/images/pointint2.png" alt=""></div>
 
             <div class="type_spell">
                 <label for="type">Type:</label>
@@ -33,7 +33,7 @@
 
             <div class="unique">
                 <label for="unique">Unique:</label>
-                <input type="checkbox" id="unique" name="unique">
+                <input type="checkbox" class="custom-checkbox2" id="unique" name="unique">
             </div>
 
             <input type="hidden" name="crop_x" id="crop_x">
