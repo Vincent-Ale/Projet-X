@@ -8,13 +8,14 @@ services:
     container_name: php-apache
     volumes:
       - ./:/var/www/html
+      - ./config/apache.conf:/etc/apache2/sites-available/000-default.conf
     ports:
-      - "8080:80"
+      - "443:443"  # Port HTTPS
     environment:
-      DB_HOST: db
-      DB_NAME: naheulbeuk
-      DB_USER: root
-      DB_PASS: ''
+      MYSQL_ROOT_PASSWORD: Donjon2024!
+      MYSQL_DATABASE: naheulbeuk
+      MYSQL_USER: admin_donjon
+      MYSQL_PASSWORD: Donjon1234
     depends_on:
       - db
 
@@ -27,6 +28,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
   db_data:
