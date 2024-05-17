@@ -28,10 +28,10 @@ $dateString = $date->format('Y-m-d H:i:s');
         <div class="menu_user">
             <ul>
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/">Mes Equipes</a></li>
+                <li><a href="/jeu">Entrer dans le Donjon</a></li>
                 <li><a href="/codex">Le Codex</a></li>
                 <li><a href="/">Mes Scores</a></li>
-                <li><a href="/">Administration du site</a></li>
+                <li><a href="/admin">Administration du site</a></li>
                 <li><a href="/">Déconnexion</a></li>
             </ul>
         </div>

@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const cropBtn = document.getElementById('crop-btn');
     const imgCard = document.querySelector('.img_card img'); // Récupération de l'élément img de la div img_card
     
+    
     let cropper;
-
     fileUpload.addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file) {
