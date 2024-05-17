@@ -197,7 +197,6 @@ class CharacterController {
                     if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
                         // Crop the image using GD Library
                         if ($crop_width > 0 && $crop_height > 0) {
-                            try {
                                 $src_image = imagecreatefromstring(file_get_contents($file_path));
                                 $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
                                 
@@ -226,10 +225,7 @@ class CharacterController {
         
                                 imagedestroy($src_image);
                                 imagedestroy($cropped_image);
-                            } catch (Exception $e) {
-                                echo 'Erreur lors du traitement de l\'image : ', $e->getMessage();
-                                return;
-                            }
+                            
                         }
 
                         // Supprimez l'ancienne image si elle existe
