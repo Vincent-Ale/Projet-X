@@ -48,11 +48,34 @@
             <!-- Modal pour le recadrage -->
             <div id="crop-modal" style="display: none;">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
                     <div class="cropper-container" style="overflow: hidden; display: flex; justify-content: center; align-items: center;">
                         <img id="image-to-crop" src="" alt="Image à recadrer" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                     </div>
-                    <button id="crop-btn">Recadrer</button>
+                    <!-- Options de rotation et de retournement miroir -->
+                    <div class="crop-options">
+                        <div class="degre">
+                            <p>90°</p>
+                            <span id="rotateLeftBtn"><i class="fas fa-undo"></i></span>
+                        </div>
+                        <div class="degre">
+                            <p>10°</p>
+                            <span id="rotateLeftBtn10"><i class="fas fa-undo"></i></span>
+                        </div>
+                        <div class="degre">
+                            <p>90°</p>
+                            <span id="rotateRightBtn"><i class="fas fa-redo"></i></span>
+                        </div>
+                        <div class="degre">
+                            <p>10°</p>
+                            <span id="rotateRightBtn10"><i class="fas fa-redo"></i></span>
+                        </div>
+                        <span id="mirrorHorizontalBtn"><i class="fas fa-arrows-alt-h"></i></span>
+                        <span id="mirrorVerticalBtn"><i class="fas fa-arrows-alt-v"></i></span>
+                    </div>
+                    <div class="close-crop-btn">
+                        <button id="crop-btn">Recadrer</button>
+                        <span class="close">Annuler</span>
+                    </div>
                 </div>
             </div>
             

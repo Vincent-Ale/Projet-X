@@ -51,6 +51,9 @@ class CharacterController {
         $crop_y = isset($_POST['crop_y']) ? (int)$_POST['crop_y'] : 0;
         $crop_width = isset($_POST['crop_width']) ? (int)$_POST['crop_width'] : 0;
         $crop_height = isset($_POST['crop_height']) ? (int)$_POST['crop_height'] : 0;
+
+        $rotate = isset($_POST['rotate']) ? (int)$_POST['rotate'] : 0;
+        $mirror = isset($_POST['mirror']) ? json_decode($_POST['mirror'], true) : ['horizontal' => false, 'vertical' => false];
     
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $upload_dir = 'assets/images'; // Chemin du dossier d'uploads
@@ -66,9 +69,26 @@ class CharacterController {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $file_path)) {
                 // Crop the image using GD Library
                 if ($crop_width > 0 && $crop_height > 0) {
-                    
+                    try {
                         $src_image = imagecreatefromstring(file_get_contents($file_path));
                         $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
+
+                        // Rotate the image if necessary
+                        if ($rotate !== 0) {
+                            $src_image = imagerotate($src_image, $rotate, 0);
+                        }
+
+                        // Mirror the image if necessary
+                        if ($mirror['horizontal'] || $mirror['vertical']) {
+                            if ($mirror['horizontal'] && $mirror['vertical']) {
+                                $src_image = imageflip($src_image, IMG_FLIP_BOTH);
+                            } elseif ($mirror['horizontal']) {
+                                $src_image = imageflip($src_image, IMG_FLIP_HORIZONTAL);
+                            } elseif ($mirror['vertical']) {
+                                $src_image = imageflip($src_image, IMG_FLIP_VERTICAL);
+                            }
+                        }
+
                         
                         // Keep transparency for PNG images
                         if ($extension === 'png') {
@@ -88,10 +108,6 @@ class CharacterController {
                         );
     
                         if ($extension === 'png') {
-                            imagealphablending($cropped_image, false);
-                            imagesavealpha($cropped_image, true);
-                            $transparent = imagecolorallocatealpha($cropped_image, 0, 0, 0, 127);
-                            imagecolortransparent($cropped_image, $transparent);
                             imagepng($cropped_image, $file_path);
                         } else {
                             imagejpeg($cropped_image, $file_path);
@@ -99,6 +115,10 @@ class CharacterController {
     
                         imagedestroy($src_image);
                         imagedestroy($cropped_image);
+                    } catch (Exception $e) {
+                        echo 'Erreur lors du traitement de l\'image : ', $e->getMessage();
+                        return;
+                        }
                 }
                 $image_path = $file_path;  // Mettre à jour le chemin de l'image
             } else {

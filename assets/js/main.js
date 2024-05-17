@@ -58,9 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const cropModal = document.getElementById('crop-modal');
     const cropBtn = document.getElementById('crop-btn');
     const imgCard = document.querySelector('.img_card img'); // Récupération de l'élément img de la div img_card
+    const rotateInput = document.getElementById('rotate');
+    const mirrorInput = document.getElementById('mirror');
     
     
     let cropper;
+    let rotate = 0;
+    let mirror = { horizontal: false, vertical: false };
+
     fileUpload.addEventListener('change', function (event) {
         const file = event.target.files[0];
         if (file) {
@@ -116,17 +121,93 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('input[name="crop_y"]').value = cropData.y;
                 document.querySelector('input[name="crop_width"]').value = cropData.width;
                 document.querySelector('input[name="crop_height"]').value = cropData.height;
+                document.querySelector('input[name="rotate"]').value = cropData.rotate;
+                document.querySelector('input[name="mirror"]').value = cropData.mirror;
+                
 
                 // Fermer la modal
                 closeModal();
             });
         }
     });
-    
 
+    // Fonction pour faire pivoter l'image à gauche
+    document.getElementById('rotateLeftBtn').addEventListener('click', function() {
+        console.log("Bouton de rotation gauche cliqué !");
+        if (cropper) {
+            cropper.rotate(-90);
+            rotate -= 90; // Mettre à jour la valeur de rotation
+            updateRotateInput(); // Mettre à jour la valeur de rotation dans l'input hidden
 
-    
+        }
+    });
+
+    // Fonction pour faire pivoter l'image à droite
+    document.getElementById('rotateRightBtn').addEventListener('click', function() {
+        console.log("Bouton de rotation droite cliqué !");
+        if (cropper) {
+            cropper.rotate(90);
+            rotate += 90; // Mettre à jour la valeur de rotation
+            updateRotateInput(); // Mettre à jour la valeur de rotation dans l'input hidden
+        }
+    });
+
+    // Fonction pour faire pivoter l'image à gauche
+    document.getElementById('rotateLeftBtn10').addEventListener('click', function() {
+        console.log("Bouton de rotation gauche cliqué !");
+        if (cropper) {
+            cropper.rotate(-10);
+            rotate -= 10; // Mettre à jour la valeur de rotation
+            updateRotateInput(); // Mettre à jour la valeur de rotation dans l'input hidden
+        }
+    });
+
+    // Fonction pour faire pivoter l'image à droite
+    document.getElementById('rotateRightBtn10').addEventListener('click', function() {
+        console.log("Bouton de rotation droite cliqué !");
+        if (cropper) {
+            cropper.rotate(10);
+            rotate += 10; // Mettre à jour la valeur de rotation
+            updateRotateInput(); // Mettre à jour la valeur de rotation dans l'input hidden
+        }
+    });
+
+    // Fonction pour retourner horizontalement l'image
+    document.getElementById('mirrorHorizontalBtn').addEventListener('click', function() {
+        console.log("Bouton de retournement horizontal cliqué !");
+        if (cropper) {
+            mirror.horizontal = !mirror.horizontal; // Mettre à jour la valeur de miroir horizontal
+            cropper.scaleX(-1 * cropper.getData().scaleX); // Inverser l'échelle horizontale
+            updateMirrorInput(); // Mettre à jour la valeur de miroir dans l'input hidden
+        }
+    });
+
+    // Fonction pour retourner verticalement l'image
+    document.getElementById('mirrorVerticalBtn').addEventListener('click', function() {
+        console.log("Bouton de retournement vertical cliqué !");
+        if (cropper) {
+            mirror.vertical = !mirror.vertical; // Mettre à jour la valeur de miroir vertical
+            cropper.scaleY(-1 * cropper.getData().scaleY); // Inverser l'échelle verticale
+            updateMirrorInput(); // Mettre à jour la valeur de miroir dans l'input hidden
+        }
+    });
+
 });
+
+// Fonction pour mettre à jour la valeur de rotation dans l'input hidden
+function updateRotateInput() {
+    if (rotate < 0) {
+        rotate += 360; // Assurer que la rotation est dans l'intervalle [0, 360)
+    } else if (rotate >= 360) {
+        rotate %= 360; // Assurer que la rotation est dans l'intervalle [0, 360)
+    }
+    rotateInput.value = rotate; // Mettre à jour la valeur de rotation dans l'input hidden
+}
+
+// Fonction pour mettre à jour la valeur de miroir dans l'input hidden
+function updateMirrorInput() {
+    mirrorInput.value = JSON.stringify(mirror); // Mettre à jour la valeur de miroir dans l'input hidden
+}
 
 
 
