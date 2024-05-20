@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 imageToCrop.src = e.target.result;
                 cropModal.style.display = 'flex';
                 cropper = new Cropper(imageToCrop, {
-                    aspectRatio: 230 / 150,
+                    aspectRatio: 300 / 300,
                     viewMode: 1,
                     dragMode: 'crop',
                     cropBoxMovable: true,

@@ -1002,7 +1002,7 @@ input[type="file"] {
     color: black;
     margin: 2rem;
     width: 275px;
-    height: 420px;
+    height: 600px;
     border-radius: 1rem;
     background-image: url("/assets/images/background/wood-pattern.png");
     background-color: var(--brown-dark2);
@@ -1044,16 +1044,16 @@ h6{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 230px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     background-color: var(--grey-bg);
     border-radius: 1rem;
     margin: 0.5rem auto;
     border: 3px solid var(--yellow-color);
     &>img{
-        width: 230px;
-        height: auto;
+        width: 100px;
+        height: 100px;
         object-fit: contain;
         border-radius: 3px;
     }
@@ -2084,7 +2084,8 @@ p{
     width: 850px;
     height: 500px;
     border: 10px solid var(--yellow-color);
-    background-image: url('/assets/images/background/bg02.jpg');
+    background-image: url('/assets/images/background/bg03.jpg');
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -2099,8 +2100,13 @@ p{
 }
 
 .img_battle{
-    width: 230px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
+}
+
+.hero{
+    width: 400px;
+    height: 400px;
 }
 
 /*##########################################*/

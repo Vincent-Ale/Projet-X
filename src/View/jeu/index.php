@@ -42,7 +42,7 @@ foreach ($enemies as $enemy) {
 
     <div class="game_window">
         <div class="window">
-        <img class="img_battle" src="<?php echo $character['image_path']; ?>" alt="">
+        <img class="img_battle hero" src="<?php echo $character['image_path']; ?>" alt="">
         <img class="img_battle" src="<?php echo $enemy['image_path']; ?>" alt="">
         </div>
         <div class="action_bar"></div>
