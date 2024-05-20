@@ -38,6 +38,9 @@ class SpellController {
         $crop_width = isset($_POST['crop_width']) ? (int)$_POST['crop_width'] : 0;
         $crop_height = isset($_POST['crop_height']) ? (int)$_POST['crop_height'] : 0;
 
+        $rotate = isset($_POST['rotate']) ? (int)$_POST['rotate'] : 0;
+        $mirror = isset($_POST['mirror']) ? json_decode($_POST['mirror'], true) : ['horizontal' => false, 'vertical' => false];
+
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $upload_dir = 'assets/images'; // Chemin du dossier d'uploads
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
@@ -55,6 +58,19 @@ class SpellController {
                     try {
                         $src_image = imagecreatefromstring(file_get_contents($file_path));
                         $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
+
+                        // Rotation de l'image si nécessaire
+                        if ($rotate !== 0) {
+                            $src_image = imagerotate($src_image, $rotate, 0);
+                        }
+    
+                        // Miroir de l'image si nécessaire
+                        if ($mirror['horizontal']) {
+                            imageflip($src_image, IMG_FLIP_HORIZONTAL);
+                        }
+                        if ($mirror['vertical']) {
+                            imageflip($src_image, IMG_FLIP_VERTICAL);
+                        }
                         
                         // Keep transparency for PNG images
                         if ($extension === 'png') {
@@ -120,6 +136,9 @@ class SpellController {
         $crop_y = isset($_POST['crop_y']) ? (int)$_POST['crop_y'] : 0;
         $crop_width = isset($_POST['crop_width']) ? (int)$_POST['crop_width'] : 0;
         $crop_height = isset($_POST['crop_height']) ? (int)$_POST['crop_height'] : 0;
+
+        $rotate = isset($_POST['rotate']) ? (int)$_POST['rotate'] : 0;
+        $mirror = isset($_POST['mirror']) ? json_decode($_POST['mirror'], true) : ['horizontal' => false, 'vertical' => false];
     
         $spell = $this->model->getSpellById($id);
         $image_path = $spell['image_path']; // Utilisez l'image existante par défaut
@@ -142,6 +161,19 @@ class SpellController {
                     try {
                         $src_image = imagecreatefromstring(file_get_contents($file_path));
                         $cropped_image = imagecreatetruecolor($crop_width, $crop_height);
+
+                        // Rotation de l'image si nécessaire
+                        if ($rotate !== 0) {
+                            $src_image = imagerotate($src_image, $rotate, 0);
+                        }
+    
+                        // Miroir de l'image si nécessaire
+                        if ($mirror['horizontal']) {
+                            imageflip($src_image, IMG_FLIP_HORIZONTAL);
+                        }
+                        if ($mirror['vertical']) {
+                            imageflip($src_image, IMG_FLIP_VERTICAL);
+                        }
                         
                         // Keep transparency for PNG images
                         if ($extension === 'png') {
