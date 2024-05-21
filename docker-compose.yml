@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build:
@@ -9,16 +7,18 @@ services:
     volumes:
       - ./:/var/www/html
       - ./config/apache.conf:/etc/apache2/sites-available/000-default.conf
+      - vendor_data:/var/www/html/vendor
     ports:
-      - "443:443"  # Port HTTPS
+      - "443:443"
+    env_file:
+      - .env # Ajoutez cette ligne pour charger les variables d'environnement depuis le fichier .env
     environment:
-      MYSQL_ROOT_PASSWORD: Donjon2024!
-      MYSQL_DATABASE: naheulbeuk
-      MYSQL_USER: admin_donjon
-      MYSQL_PASSWORD: Donjon1234
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
     depends_on:
       - db
-
   db:
     image: mysql:8.0
     container_name: mysql
@@ -29,6 +29,6 @@ services:
       - db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-
 volumes:
-  db_data:
+  db_data: 
+  vendor_data:
